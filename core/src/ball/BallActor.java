@@ -31,8 +31,9 @@ public class BallActor extends Actor {
         float topSide = getTop();
         float bottomSide = getY();
         this.ySpeed += gravity;
+        this.xSpeed = 0f;
 
-        setPosition(getX(), getY() + ySpeed);
+        setPosition(getX() + this.xSpeed, getY() + this.ySpeed);
 
         if (bottomSide <= 0) {
             setPosition(getX(), 0);
