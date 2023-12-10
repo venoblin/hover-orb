@@ -9,11 +9,9 @@ public class BallActor extends Actor {
     private Texture texture;
     private int width = 300;
     private int height = 300;
-    private float gravity = 2.0f;
-    private float leftSide;
-    private float rightSide;
-    private float topSide;
-    private float bottomSide;
+    private float gravity = -2.0f;
+    private float xSpeed;
+    private float ySpeed;
 
     public BallActor(Texture texture) {
         this.texture = texture;
@@ -28,13 +26,17 @@ public class BallActor extends Actor {
     @Override
     public void act(float delta) {
         super.act(delta);
-        this.leftSide = getX();
-        this.rightSide = getRight();
-        this.topSide = getTop();
-        this.bottomSide = getY();
-        setPosition(getX(), getY() - gravity);
+        float leftSide = getX();
+        float rightSide = getRight();
+        float topSide = getTop();
+        float bottomSide = getY();
+        this.ySpeed += gravity;
+
+        setPosition(getX(), getY() + ySpeed);
 
         if (bottomSide <= 0) {
+            setPosition(getX(), 0);
+        } else if (topSide >= Gdx.graphics.getHeight()) {
             setPosition(getX(), 0);
         }
 
