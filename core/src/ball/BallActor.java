@@ -18,15 +18,15 @@ public class BallActor extends Actor {
         this.texture = texture;
         setSize(this.width, this.height);
         setPosition(
-                Gdx.graphics.getWidth() / 2.0f,
-                Gdx.graphics.getHeight() / 2.0f
+                Gdx.graphics.getWidth() / 2.0f - getWidth() / 2,
+                Gdx.graphics.getHeight() / 2.0f - getHeight() / 2
         );
     }
 
     @Override
     public void act(float delta) {
         super.act(delta);
-        setPosition(getX(), getY() - gravity);
+//        setPosition(getX(), getY() - gravity);
     }
 
     @Override
