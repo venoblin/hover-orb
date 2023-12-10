@@ -7,8 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class BallActor extends Actor {
     private Texture texture;
-    private int width = 250;
-    private int height = 250;
+    private int width = 300;
+    private int height = 300;
     private final float gravity = 2.0f;
     private float xSpeed;
     private float ySpeed;
