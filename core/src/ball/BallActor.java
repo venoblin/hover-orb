@@ -7,8 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class BallActor extends Actor {
     private Texture texture;
-    private int width = 100;
-    private int height = 100;
+    private int width = 250;
+    private int height = 250;
 
     public BallActor(Texture texture) {
         this.texture = texture;
