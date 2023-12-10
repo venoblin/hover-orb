@@ -9,13 +9,15 @@ public class BallActor extends Actor {
     private Texture texture;
     private int width = 300;
     private int height = 300;
-    private final float gravity = 2.0f;
-    private float xSpeed;
-    private float ySpeed;
-
+    private float gravity = 2.0f;
+    private float leftSide;
+    private float rightSide;
+    private float topSide;
+    private float bottomSide;
 
     public BallActor(Texture texture) {
         this.texture = texture;
+
         setSize(this.width, this.height);
         setPosition(
                 Gdx.graphics.getWidth() / 2.0f - getWidth() / 2,
@@ -26,7 +28,16 @@ public class BallActor extends Actor {
     @Override
     public void act(float delta) {
         super.act(delta);
-//        setPosition(getX(), getY() - gravity);
+        this.leftSide = getX();
+        this.rightSide = getRight();
+        this.topSide = getTop();
+        this.bottomSide = getY();
+        setPosition(getX(), getY() - gravity);
+
+        if (bottomSide <= 0) {
+            setPosition(getX(), 0);
+        }
+
     }
 
     @Override
