@@ -2,14 +2,20 @@ package com.venoblin.hoverorb;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+import ball.BallActor;
+
 public class HoverOrb extends ApplicationAdapter {
-	Texture img;
-	
+
+	private Stage stage;
+	private BallActor ball;
+	private Texture img;
+
 	@Override
 	public void create () {
-		img = new Texture("ball.jpg");
+		ball = new BallActor(new Texture("ball.png"));
 	}
 
 	@Override
