@@ -17,7 +17,7 @@ public class HoverOrb extends ApplicationAdapter {
 	private Texture ballTexture;
 
 	@Override
-	public void create () {
+	public void create() {
 		stage = new Stage(new StretchViewport(
 				Gdx.graphics.getWidth(),
 				Gdx.graphics.getHeight()
@@ -28,7 +28,7 @@ public class HoverOrb extends ApplicationAdapter {
 	}
 
 	@Override
-	public void render () {
+	public void render() {
 		ScreenUtils.clear(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.act(Gdx.graphics.getDeltaTime());
@@ -36,7 +36,8 @@ public class HoverOrb extends ApplicationAdapter {
 	}
 	
 	@Override
-	public void dispose () {
+	public void dispose() {
 		ballTexture.dispose();
+		stage.dispose();
 	}
 }
