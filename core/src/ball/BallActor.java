@@ -4,13 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-
 
 public class BallActor extends Actor {
     private Texture texture;
-    private InputListener inputListener;
     private int width = 300;
     private int height = 300;
     private float gravity = -2.0f;
@@ -20,20 +16,12 @@ public class BallActor extends Actor {
     public BallActor(Texture texture) {
         super();
         this.texture = texture;
-        this.inputListener = new InputListener() {
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                    Gdx.app.log("MyActor", "Touched at (" + x + ", " + y + ")");
-                    return true;
-            };
-        };
 
         setSize(this.width, this.height);
         setPosition(
                 Gdx.graphics.getWidth() / 2.0f - getWidth() / 2,
                 Gdx.graphics.getHeight() / 2.0f - getHeight() / 2
         );
-        addListener(this.inputListener);
     }
 
     @Override

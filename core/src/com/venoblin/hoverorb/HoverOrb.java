@@ -22,6 +22,7 @@ public class HoverOrb extends ApplicationAdapter {
 				Gdx.graphics.getWidth(),
 				Gdx.graphics.getHeight()
 		));
+		Gdx.input.setInputProcessor(stage);
 		ballTexture = new Texture("ball.png");
 		ball = new BallActor(ballTexture);
 		stage.addActor(ball);
