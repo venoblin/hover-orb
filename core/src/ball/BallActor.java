@@ -11,9 +11,10 @@ public class BallActor extends Actor {
     private Texture texture;
     private int width = 300;
     private int height = 300;
-    private float gravity = -2.0f;
+    private final float gravity = -2.0f;
     private float xVelocity;
     private float yVelocity;
+    private final float yMaxVelocity = 15f;
 
 
 
@@ -46,8 +47,11 @@ public class BallActor extends Actor {
         float rightSide = getRight();
         float topSide = getTop();
         float bottomSide = getY();
+
         yVelocity += gravity;
-        setPosition(getX() + xVelocity, getY() + yVelocity);
+        if (yVelocity >= yMaxVelocity) {
+            yVelocity = yMaxVelocity;
+        }
 
         if (bottomSide <= 0) {
             setPosition(getX(), 0);
@@ -55,6 +59,8 @@ public class BallActor extends Actor {
         } else if (topSide >= Gdx.graphics.getHeight()) {
             setPosition(getX(), 0);
         }
+
+        setPosition(getX() + xVelocity, getY() + yVelocity);
     }
 
     @Override
