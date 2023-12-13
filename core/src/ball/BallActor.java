@@ -60,7 +60,7 @@ public class BallActor extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        batch.draw(texture, getX(), getY(), this.width, this.height);
+        batch.draw(texture, getX(), getY(), width, height);
     }
 
 }
