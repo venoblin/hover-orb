@@ -47,11 +47,11 @@ public class BallActor extends Actor {
         float topSide = getTop();
         float bottomSide = getY();
         yVelocity += gravity;
-
         setPosition(getX() + xVelocity, getY() + yVelocity);
 
         if (bottomSide <= 0) {
             setPosition(getX(), 0);
+            yVelocity = 0;
         } else if (topSide >= Gdx.graphics.getHeight()) {
             setPosition(getX(), 0);
         }
