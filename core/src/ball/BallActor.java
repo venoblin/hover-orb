@@ -27,8 +27,6 @@ public class BallActor extends Actor {
                 Gdx.graphics.getHeight() / 2.0f - getHeight() / 2
         );
 
-        setBounds(getX(), getY(), texture.getWidth(), texture.getHeight());
-
         addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
