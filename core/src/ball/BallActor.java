@@ -11,10 +11,10 @@ public class BallActor extends Actor {
     private Texture texture;
     private int width = 300;
     private int height = 300;
-    private final float gravity = -2.0f;
+    private final float gravity = -5.0f;
     private float xVelocity;
     private float yVelocity;
-    private final float yMaxVelocity = 50f;
+    private final float yMaxVelocity = 150f;
 
     public BallActor(Texture texture) {
         super();
@@ -23,13 +23,13 @@ public class BallActor extends Actor {
         setSize(width, height);
         setPosition(
                 Gdx.graphics.getWidth() / 2.0f - getWidth() / 2,
-                Gdx.graphics.getHeight() / 2.0f - getHeight() / 2
+                0
         );
 
         addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                yVelocity += 15f;
+                yVelocity += 80f;
                 updatePosition(0, yVelocity);
                 return true;
             }
