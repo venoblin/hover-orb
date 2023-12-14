@@ -11,6 +11,9 @@ public class BallActor extends Actor {
     private Rectangle touchBounds;
     private int width = 300;
     private int height = 300;
+    // initial width and height used to reset width and height
+    private final int initialWidth = 300;
+    private final int initialHeight = 300;
     private final float gravity = -10.0f;
     private float xVelocity;
     private float yVelocity;
@@ -42,6 +45,11 @@ public class BallActor extends Actor {
         );
     }
 
+    private void resetWidthHeight() {
+        width = initialWidth;
+        height = initialHeight;
+    }
+
     @Override
     public void act(float delta) {
         super.act(delta);
@@ -68,7 +76,8 @@ public class BallActor extends Actor {
             float touchY = Gdx.graphics.getHeight() - Gdx.input.getY();
 
             if (touchBounds.contains(touchX, touchY)) {
-                yVelocity += 700f;
+//                yVelocity += 700f;
+
             }
         }
 
