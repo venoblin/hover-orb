@@ -50,6 +50,19 @@ public class BallActor extends Actor {
         height = initialHeight;
     }
 
+    private boolean isBallTouched() {
+        if (Gdx.input.justTouched()) {
+            float touchX = Gdx.input.getX();
+            float touchY = Gdx.graphics.getHeight() - Gdx.input.getY();
+
+            if (touchBounds.contains(touchX, touchY)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     @Override
     public void act(float delta) {
         super.act(delta);
@@ -71,14 +84,10 @@ public class BallActor extends Actor {
             updatePositionByVelocity(xVelocity, yVelocity);
         }
 
-        if (Gdx.input.justTouched()) {
-            float touchX = Gdx.input.getX();
-            float touchY = Gdx.graphics.getHeight() - Gdx.input.getY();
-
-            if (touchBounds.contains(touchX, touchY)) {
-//                yVelocity += 700f;
-
-            }
+        if (isBallTouched()) {
+//            yVelocity += 700f;
+            width += 10;
+            height -= 10;
         }
 
         updatePositionByVelocity(xVelocity, yVelocity);
