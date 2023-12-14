@@ -21,15 +21,12 @@ public class BallActor extends Actor {
         this.texture = texture;
 
         setSize(width, height);
-        setPosition(
-                Gdx.graphics.getWidth() / 2.0f - getWidth() / 2,
-                0
-        );
+        startingPosition();
 
         addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                yVelocity += 80f;
+                yVelocity += 100f;
                 updatePosition(0, yVelocity);
                 return true;
             }
@@ -38,6 +35,13 @@ public class BallActor extends Actor {
 
     private void updatePosition(float xVelocity, float yVelocity) {
         setPosition(getX() + xVelocity, getY() + yVelocity);
+    }
+
+    private void startingPosition() {
+        setPosition(
+                Gdx.graphics.getWidth() / 2.0f - getWidth() / 2,
+                0
+        );
     }
 
     @Override
@@ -54,7 +58,7 @@ public class BallActor extends Actor {
         }
 
         if (bottomSide <= 0) {
-            setPosition(getX(), 0);
+            startingPosition();
             yVelocity = 0;
         } else if (topSide >= Gdx.graphics.getHeight()) {
             setPosition(getX(), 0);
