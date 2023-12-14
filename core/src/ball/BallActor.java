@@ -26,7 +26,7 @@ public class BallActor extends Actor {
         addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                yVelocity += 100f;
+                yVelocity +=100f;
                 updatePosition(0, yVelocity);
                 return true;
             }
@@ -61,7 +61,8 @@ public class BallActor extends Actor {
             startingPosition();
             yVelocity = 0;
         } else if (topSide >= Gdx.graphics.getHeight()) {
-            setPosition(getX(), 0);
+            yVelocity *= -1;
+            updatePosition(xVelocity, yVelocity);
         }
 
         updatePosition(xVelocity, yVelocity);
