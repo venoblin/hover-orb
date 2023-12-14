@@ -5,8 +5,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 
 public class BallActor extends Actor {
     private Texture texture;
@@ -26,15 +24,6 @@ public class BallActor extends Actor {
         startingPosition();
 
         touchBounds = new Rectangle(getX() - 50, getY() - 50, width + 100, height + 100);
-
-        addListener(new InputListener() {
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                yVelocity += 700f;
-                updatePosition(0, yVelocity);
-                return true;
-            }
-        });
     }
 
     private  void updateTouchBounds() {
@@ -43,7 +32,7 @@ public class BallActor extends Actor {
 
     private void updatePositionByVelocity(float xVelocity, float yVelocity) {
         setPosition(getX() + xVelocity, getY() + yVelocity);
-
+        updateTouchBounds();
     }
 
     private void startingPosition() {
@@ -72,6 +61,15 @@ public class BallActor extends Actor {
         } else if (topSide >= Gdx.graphics.getHeight()) {
             yVelocity *= -1;
             updatePositionByVelocity(xVelocity, yVelocity);
+        }
+
+        if (Gdx.input.justTouched()) {
+            float touchX = Gdx.input.getX();
+            float touchY = Gdx.graphics.getHeight() - Gdx.input.getY();
+
+            if (touchBounds.contains(touchX, touchY)) {
+                yVelocity += 700f;
+            }
         }
 
         updatePositionByVelocity(xVelocity, yVelocity);
