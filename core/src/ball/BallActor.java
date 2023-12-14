@@ -59,7 +59,7 @@ public class BallActor extends Actor {
             setPosition(getX(), 0);
         }
 
-        setPosition(getX() + xVelocity, getY() + yVelocity);
+        updatePosition(xVelocity, yVelocity);
     }
 
     @Override
