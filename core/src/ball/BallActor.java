@@ -14,7 +14,7 @@ public class BallActor extends Actor {
     private final float gravity = -2.0f;
     private float xVelocity;
     private float yVelocity;
-    private final float yMaxVelocity = 15f;
+    private final float yMaxVelocity = 50f;
 
     public BallActor(Texture texture) {
         super();
@@ -29,7 +29,8 @@ public class BallActor extends Actor {
         addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-
+                yVelocity += 15f;
+                updatePosition(0, yVelocity);
                 return true;
             }
         });
