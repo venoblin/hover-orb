@@ -41,7 +41,7 @@ public class BallActor extends Actor {
         touchBounds.set(getX() - 50, getY() - 50, width + 100, height + 100);
     }
 
-    private void updatePosition(float xVelocity, float yVelocity) {
+    private void updatePositionByVelocity(float xVelocity, float yVelocity) {
         setPosition(getX() + xVelocity, getY() + yVelocity);
 
     }
@@ -71,10 +71,10 @@ public class BallActor extends Actor {
             yVelocity = 0;
         } else if (topSide >= Gdx.graphics.getHeight()) {
             yVelocity *= -1;
-            updatePosition(xVelocity, yVelocity);
+            updatePositionByVelocity(xVelocity, yVelocity);
         }
 
-        updatePosition(xVelocity, yVelocity);
+        updatePositionByVelocity(xVelocity, yVelocity);
     }
 
     @Override
