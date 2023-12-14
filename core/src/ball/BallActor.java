@@ -3,15 +3,17 @@ package ball;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 
 public class BallActor extends Actor {
     private Texture texture;
+    private Rectangle touchBounds;
     private int width = 300;
     private int height = 300;
-    private final float gravity = -5.0f;
+    private final float gravity = -10.0f;
     private float xVelocity;
     private float yVelocity;
     private final float yMaxVelocity = 150f;
@@ -23,10 +25,12 @@ public class BallActor extends Actor {
         setSize(width, height);
         startingPosition();
 
+        touchBounds = new Rectangle(getX() - 50, getY() - 50, width + 100, height + 100);
+
         addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                yVelocity +=100f;
+                yVelocity += 700f;
                 updatePosition(0, yVelocity);
                 return true;
             }
