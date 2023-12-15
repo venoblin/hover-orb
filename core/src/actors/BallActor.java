@@ -20,7 +20,7 @@ public class BallActor extends Actor {
     private final int initialHeight = 300;
     private final float gravity = -10.0f;
     private final Vector2 velocity = new Vector2(0, 0);
-    private final Vector2 maxVelocity = new Vector2(10, 150);
+    private final Vector2 maxVelocity = new Vector2(50, 150);
 
     public BallActor(Texture texture) {
         this.texture = texture;
@@ -81,13 +81,9 @@ public class BallActor extends Actor {
         }
 
         if (touchBounds.isTouched()) {
-            float touchX = touchBounds.getTouchPoints().x;
+            height -= 150;
             velocity.y += 700f;
-            velocity.x -= 5f;
-
-            if (getX() < touchX && touchX < getX() + getWidth() / 2) {
-                height -= 150;
-            }
+            velocity.x -= 20f;
         } else {
             resetWidthHeight();
         }
