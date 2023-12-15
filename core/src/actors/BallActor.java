@@ -65,8 +65,9 @@ public class BallActor extends Actor {
         }
 
         if (bottomSide <= 0) {
-            setToStartPosition();
+//            setToStartPosition();
             velocity.y = 0;
+            velocity.x = 0;
         } else if (topSide >= Gdx.graphics.getHeight()) {
             velocity.y *= -1;
             updatePositionByVelocity(velocity.x, velocity.y);
