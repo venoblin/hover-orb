@@ -85,8 +85,8 @@ public class BallActor extends Actor {
         }
 
         if (isBallTouched()) {
-            yVelocity += 700f;
-            height -= 100;
+//            yVelocity += 700f;
+            height -= 150;
         } else {
             resetWidthHeight();
         }
