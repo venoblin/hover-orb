@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import utils.RectTouchDetection;
@@ -19,7 +20,8 @@ public class BallActor extends Actor {
     private final int initialHeight = 300;
     private final float gravity = -10.0f;
     private float xVelocity;
-    private float yVelocity;
+//    private float yVelocity;
+    private final Vector2 velocity = new Vector2(0, 0);
     private final float yMaxVelocity = 150f;
 
     public BallActor(Texture texture) {
@@ -62,22 +64,22 @@ public class BallActor extends Actor {
         float topSide = getTop();
         float bottomSide = getY();
 
-        yVelocity += gravity;
-        if (yVelocity >= yMaxVelocity) {
-            yVelocity = yMaxVelocity;
+        velocity.y += gravity;
+        if (velocity.y >= yMaxVelocity) {
+            velocity.y = yMaxVelocity;
         }
 
         if (bottomSide <= 0) {
             startingPosition();
-            yVelocity = 0;
+            velocity.y = 0;
         } else if (topSide >= Gdx.graphics.getHeight()) {
-            yVelocity *= -1;
-            updatePositionByVelocity(xVelocity, yVelocity);
+            velocity.y *= -1;
+            updatePositionByVelocity(xVelocity, velocity.y);
         }
 
         if (touchBounds.isTouched()) {
             float touchX = touchBounds.getTouchPoints().x;
-//            yVelocity += 700f;
+            velocity.y += 700f;
 
             if (getX() < touchX && touchX < getX() + getWidth() / 2) {
                 height -= 150;
@@ -86,7 +88,7 @@ public class BallActor extends Actor {
             resetWidthHeight();
         }
 
-        updatePositionByVelocity(xVelocity, yVelocity);
+        updatePositionByVelocity(xVelocity, velocity.y);
     }
 
     @Override
