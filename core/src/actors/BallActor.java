@@ -19,10 +19,8 @@ public class BallActor extends Actor {
     private final int initialWidth = 300;
     private final int initialHeight = 300;
     private final float gravity = -10.0f;
-    private float xVelocity;
-//    private float yVelocity;
     private final Vector2 velocity = new Vector2(0, 0);
-    private final float yMaxVelocity = 150f;
+    private final Vector2 maxVelocity = new Vector2(0, 150);
 
     public BallActor(Texture texture) {
         super();
@@ -65,8 +63,8 @@ public class BallActor extends Actor {
         float bottomSide = getY();
 
         velocity.y += gravity;
-        if (velocity.y >= yMaxVelocity) {
-            velocity.y = yMaxVelocity;
+        if (velocity.y >= maxVelocity.y) {
+            velocity.y = maxVelocity.y;
         }
 
         if (bottomSide <= 0) {
@@ -74,7 +72,7 @@ public class BallActor extends Actor {
             velocity.y = 0;
         } else if (topSide >= Gdx.graphics.getHeight()) {
             velocity.y *= -1;
-            updatePositionByVelocity(xVelocity, velocity.y);
+            updatePositionByVelocity(velocity.x, velocity.y);
         }
 
         if (touchBounds.isTouched()) {
@@ -88,7 +86,7 @@ public class BallActor extends Actor {
             resetWidthHeight();
         }
 
-        updatePositionByVelocity(xVelocity, velocity.y);
+        updatePositionByVelocity(velocity.x, velocity.y);
     }
 
     @Override
