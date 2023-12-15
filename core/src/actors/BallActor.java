@@ -6,9 +6,12 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+import utils.RectTouchDetection;
+
 public class BallActor extends Actor {
     private Texture texture;
-    private Rectangle touchBounds;
+    private Rectangle touchRect;
+    private RectTouchDetection touchBounds;
     private int width = 300;
     private int height = 300;
     // initial width and height used to reset width and height
@@ -26,11 +29,12 @@ public class BallActor extends Actor {
         setSize(width, height);
         startingPosition();
 
-        touchBounds = new Rectangle(getX() - 50, getY() - 50, width + 100, height + 100);
+        touchRect = new Rectangle(getX() - 50, getY() - 50, width + 100, height + 100);
+        touchBounds = new RectTouchDetection(touchRect);
     }
 
     private  void updateTouchBounds() {
-        touchBounds.set(getX() - 50, getY() - 50, width + 100, height + 100);
+        touchRect.set(getX() - 50, getY() - 50, width + 100, height + 100);
     }
 
     private void updatePositionByVelocity(float xVelocity, float yVelocity) {
@@ -48,19 +52,6 @@ public class BallActor extends Actor {
     private void resetWidthHeight() {
         width = initialWidth;
         height = initialHeight;
-    }
-
-    private boolean isBallTouched() {
-        if (Gdx.input.justTouched()) {
-            float touchX = Gdx.input.getX();
-            float touchY = Gdx.graphics.getHeight() - Gdx.input.getY();
-
-            if (touchBounds.contains(touchX, touchY)) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     @Override
@@ -84,7 +75,7 @@ public class BallActor extends Actor {
             updatePositionByVelocity(xVelocity, yVelocity);
         }
 
-        if (isBallTouched()) {
+        if (touchBounds.isTouched()) {
 //            yVelocity += 700f;
             height -= 150;
         } else {
