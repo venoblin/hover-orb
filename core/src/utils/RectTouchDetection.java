@@ -3,10 +3,10 @@ package utils;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 
-public class TouchDetection {
+public class RectTouchDetection {
     private final Rectangle touchRectangle;
 
-    public TouchDetection(Rectangle touchRectangle) {
+    public RectTouchDetection(Rectangle touchRectangle) {
         this.touchRectangle = touchRectangle;
     }
 
