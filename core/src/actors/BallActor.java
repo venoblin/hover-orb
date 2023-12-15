@@ -66,17 +66,24 @@ public class BallActor extends Actor {
 
         if (bottomSide <= 0) {
 //            setToStartPosition();
+            setPosition(getX(), 0);
             velocity.y = 0;
             velocity.x = 0;
         } else if (topSide >= Gdx.graphics.getHeight()) {
             velocity.y *= -1;
+            updatePositionByVelocity(velocity.x, velocity.y);
+        } else if (rightSide >= Gdx.graphics.getWidth()) {
+            velocity.x *= -1;
+            updatePositionByVelocity(velocity.x, velocity.y);
+        } else if (leftSide <= 0) {
+            velocity.x *= -1;
             updatePositionByVelocity(velocity.x, velocity.y);
         }
 
         if (touchBounds.isTouched()) {
             float touchX = touchBounds.getTouchPoints().x;
             velocity.y += 700f;
-            velocity.x += 5f;
+            velocity.x -= 5f;
 
             if (getX() < touchX && touchX < getX() + getWidth() / 2) {
                 height -= 150;
