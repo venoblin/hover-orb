@@ -27,7 +27,7 @@ public class BallActor extends Actor {
         this.texture = texture;
 
         setSize(width, height);
-        startingPosition();
+        setToStartPosition();
 
         touchRect = new Rectangle(getX() - 50, getY() - 50, width + 100, height + 100);
         touchBounds = new RectTouchDetection(touchRect);
@@ -42,7 +42,7 @@ public class BallActor extends Actor {
         updateTouchRect();
     }
 
-    private void startingPosition() {
+    private void setToStartPosition() {
         setPosition(
                 Gdx.graphics.getWidth() / 2.0f - getWidth() / 2,
                 0
@@ -68,7 +68,7 @@ public class BallActor extends Actor {
         }
 
         if (bottomSide <= 0) {
-            startingPosition();
+            setToStartPosition();
             velocity.y = 0;
         } else if (topSide >= Gdx.graphics.getHeight()) {
             velocity.y *= -1;
