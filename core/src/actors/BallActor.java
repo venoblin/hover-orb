@@ -33,13 +33,13 @@ public class BallActor extends Actor {
         touchBounds = new RectTouchDetection(touchRect);
     }
 
-    private  void updateTouchBounds() {
+    private  void updateTouchRect() {
         touchRect.set(getX() - 50, getY() - 50, width + 100, height + 100);
     }
 
     private void updatePositionByVelocity(float xVelocity, float yVelocity) {
         setPosition(getX() + xVelocity, getY() + yVelocity);
-        updateTouchBounds();
+        updateTouchRect();
     }
 
     private void startingPosition() {
