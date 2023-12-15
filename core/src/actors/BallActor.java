@@ -3,15 +3,15 @@ package actors;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+import utils.Rect;
 import utils.RectTouchDetection;
 
 public class BallActor extends Actor {
     private Texture texture;
-    private Rectangle touchRect;
+    private Rect touchRect;
     private RectTouchDetection touchBounds;
     private int width = 300;
     private int height = 300;
@@ -28,17 +28,13 @@ public class BallActor extends Actor {
         setSize(width, height);
         setToStartPosition();
 
-        touchRect = new Rectangle(getX() - 50, getY() - 50, width + 100, height + 100);
+        touchRect = new Rect(getX(), getY(), width, height, 50);
         touchBounds = new RectTouchDetection(touchRect);
-    }
-
-    private  void updateTouchRect() {
-        touchRect.set(getX() - 50, getY() - 50, width + 100, height + 100);
     }
 
     private void updatePositionByVelocity(float xVelocity, float yVelocity) {
         setPosition(getX() + xVelocity, getY() + yVelocity);
-        updateTouchRect();
+        touchRect.updatePosition(getX(), getY());
     }
 
     private void setToStartPosition() {
