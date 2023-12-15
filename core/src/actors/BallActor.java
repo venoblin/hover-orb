@@ -23,7 +23,6 @@ public class BallActor extends Actor {
     private final Vector2 maxVelocity = new Vector2(0, 150);
 
     public BallActor(Texture texture) {
-        super();
         this.texture = texture;
 
         setSize(width, height);
@@ -94,5 +93,4 @@ public class BallActor extends Actor {
         super.draw(batch, parentAlpha);
         batch.draw(texture, getX(), getY(), width, height);
     }
-
 }
