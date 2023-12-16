@@ -18,4 +18,8 @@ public class Rect extends Rectangle {
     public void updatePosition(float x, float y) {
         setPosition(x - padding, y - padding);
     }
+
+    public float getMiddlePoint() {
+        return getX() + getWidth() / 2;
+    }
 }

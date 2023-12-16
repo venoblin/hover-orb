@@ -81,9 +81,13 @@ public class BallActor extends Actor {
         }
 
         if (touchBounds.isTouched()) {
+            float touchX = touchBounds.getTouchPoints().x;
+            float middleRectPoint = touchRect.getMiddlePoint();
             height -= 150;
             velocity.y += 700f;
             velocity.x -= 20f;
+
+
         } else {
             resetWidthHeight();
         }
