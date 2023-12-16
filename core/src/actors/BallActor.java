@@ -33,6 +33,12 @@ public class BallActor extends Actor {
     }
 
     private void updatePositionByVelocity(float xVelocity, float yVelocity) {
+        if (yVelocity >= maxVelocity.y) {
+            yVelocity = maxVelocity.y;
+        } else if (xVelocity >= maxVelocity.x) {
+            xVelocity = maxVelocity.x;
+        }
+
         setPosition(getX() + xVelocity, getY() + yVelocity);
         touchRect.updatePosition(getX(), getY());
     }
@@ -58,11 +64,6 @@ public class BallActor extends Actor {
         float bottomSide = getY();
 
         velocity.y += gravity;
-        if (velocity.y >= maxVelocity.y) {
-            velocity.y = maxVelocity.y;
-        } else if (velocity.x >= maxVelocity.x) {
-            velocity.x = maxVelocity.x;
-        }
 
         if (bottomSide <= 0) {
 //            setToStartPosition();
@@ -87,7 +88,11 @@ public class BallActor extends Actor {
             velocity.y += 700f;
             velocity.x -= 20f;
 
-
+            if (touchX < middleRectPoint) {
+                velocity.x -= touchX;
+            } else if (touchX > middleRectPoint) {
+                velocity.x += touchX;
+            }
         } else {
             resetWidthHeight();
         }
