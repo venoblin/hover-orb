@@ -18,9 +18,9 @@ public class BallActor extends Actor {
     // initial width and height used to reset width and height
     private final int initialWidth = 300;
     private final int initialHeight = 300;
-    private final float gravity = -10.0f;
+    private final float gravity = 5.0f;
     private final Vector2 velocity = new Vector2(0, 0);
-    private final Vector2 maxVelocity = new Vector2(50, 150);
+    private final Vector2 maxVelocity = new Vector2(50, 300);
 
     public BallActor(Texture texture) {
         this.texture = texture;
@@ -32,11 +32,21 @@ public class BallActor extends Actor {
         touchBounds = new RectTouchDetection(touchRect);
     }
 
+    private float determineCappedVelocity(float velocity, float maxVelocity) {
+        if (velocity < 0) {
+            velocity = maxVelocity * -1;
+        } else {
+            velocity = maxVelocity;
+        }
+
+        return velocity;
+    }
+
     private void updatePositionByVelocity(float xVelocity, float yVelocity) {
-        if (yVelocity >= maxVelocity.y) {
-            yVelocity = maxVelocity.y;
-        } else if (xVelocity >= maxVelocity.x) {
-            xVelocity = maxVelocity.x;
+        if (Math.abs(xVelocity) >= maxVelocity.x) {
+            xVelocity = determineCappedVelocity(xVelocity, maxVelocity.x);
+        } else if (Math.abs(yVelocity) >= maxVelocity.y) {
+            yVelocity = determineCappedVelocity(yVelocity, maxVelocity.y);
         }
 
         setPosition(getX() + xVelocity, getY() + yVelocity);
@@ -63,7 +73,7 @@ public class BallActor extends Actor {
         float topSide = getTop();
         float bottomSide = getY();
 
-        velocity.y += gravity;
+        velocity.y -= gravity;
 
         if (bottomSide <= 0) {
 //            setToStartPosition();
@@ -85,17 +95,18 @@ public class BallActor extends Actor {
             float touchX = touchBounds.getTouchPoints().x;
             float middleRectPoint = touchRect.getMiddlePoint();
             height -= 150;
-            velocity.y += 700f;
-            velocity.x -= 20f;
+            velocity.y += 125f;
 
-            if (touchX < middleRectPoint) {
-                velocity.x -= touchX;
-            } else if (touchX > middleRectPoint) {
-                velocity.x += touchX;
+            if (touchX < middleRectPoint - 25) {
+                velocity.x += 15;
+            } else if (touchX > middleRectPoint + 25) {
+                velocity.x -= 15;
             }
         } else {
             resetWidthHeight();
         }
+
+        Gdx.app.log("VELOCITY", String.valueOf(velocity.y));
 
         updatePositionByVelocity(velocity.x, velocity.y);
     }
