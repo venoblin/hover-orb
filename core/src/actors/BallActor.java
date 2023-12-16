@@ -81,8 +81,7 @@ public class BallActor extends Actor {
         velocity.y -= gravity;
 
         if (bottomSide <= 0) {
-//            setToStartPosition();
-            setPosition(getX(), 0);
+            setToStartPosition();
             velocity.y = 0;
             velocity.x = 0;
         } else if (topSide >= Gdx.graphics.getHeight()) {
@@ -103,9 +102,9 @@ public class BallActor extends Actor {
             velocity.y = 125f;
 
             if (touchX < middleRectPoint - 25) {
-                velocity.x += 15;
+                velocity.x += 5;
             } else if (touchX > middleRectPoint + 25) {
-                velocity.x -= 15;
+                velocity.x -= 5;
             }
         } else {
             resetWidthHeight();
