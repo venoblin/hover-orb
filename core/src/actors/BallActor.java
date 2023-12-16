@@ -33,23 +33,28 @@ public class BallActor extends Actor {
     }
 
     private float determineCappedVelocity(float velocity, float maxVelocity) {
+        float vel;
+
         if (velocity < 0) {
-            velocity = maxVelocity * -1;
+            vel = maxVelocity * -1;
         } else {
-            velocity = maxVelocity;
+            vel = maxVelocity;
         }
 
-        return velocity;
+        return vel;
     }
 
     private void updatePositionByVelocity(float xVelocity, float yVelocity) {
+        float xVel = xVelocity;
+        float yVel = yVelocity;
+
         if (Math.abs(xVelocity) >= maxVelocity.x) {
-            xVelocity = determineCappedVelocity(xVelocity, maxVelocity.x);
+            xVel = determineCappedVelocity(xVelocity, maxVelocity.x);
         } else if (Math.abs(yVelocity) >= maxVelocity.y) {
-            yVelocity = determineCappedVelocity(yVelocity, maxVelocity.y);
+            yVel = determineCappedVelocity(yVelocity, maxVelocity.y);
         }
 
-        setPosition(getX() + xVelocity, getY() + yVelocity);
+        setPosition(getX() + xVel, getY() + yVel);
         touchRect.updatePosition(getX(), getY());
     }
 
