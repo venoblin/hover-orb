@@ -100,7 +100,7 @@ public class BallActor extends Actor {
             float touchX = touchBounds.getTouchPoints().x;
             float middleRectPoint = touchRect.getMiddlePoint();
             height -= 150;
-            velocity.y += 125f;
+            velocity.y = 125f;
 
             if (touchX < middleRectPoint - 25) {
                 velocity.x += 15;
@@ -110,8 +110,6 @@ public class BallActor extends Actor {
         } else {
             resetWidthHeight();
         }
-
-        Gdx.app.log("VELOCITY", String.valueOf(velocity.y));
 
         updatePositionByVelocity(velocity.x, velocity.y);
     }
