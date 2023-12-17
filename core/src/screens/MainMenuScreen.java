@@ -63,7 +63,7 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void hide() {
-
+        
     }
 
     @Override
