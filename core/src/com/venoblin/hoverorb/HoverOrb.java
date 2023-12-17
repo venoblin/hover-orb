@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 import actors.BallActor;
+import screens.GameScreen;
 
 public class HoverOrb extends Game {
 
@@ -26,6 +27,7 @@ public class HoverOrb extends Game {
 		ballTexture = new Texture("ball.png");
 		ball = new BallActor(ballTexture);
 		stage.addActor(ball);
+		setScreen(new GameScreen(this, stage));
 	}
 
 	@Override

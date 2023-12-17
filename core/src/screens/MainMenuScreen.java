@@ -1,13 +1,16 @@
 package screens;
 
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.venoblin.hoverorb.HoverOrb;
 
 public class MainMenuScreen implements Screen {
     private final HoverOrb game;
+    private final Stage stage;
 
-    public MainMenuScreen(HoverOrb game) {
+    public MainMenuScreen(HoverOrb game, Stage stage) {
         this.game = game;
+        this.stage = stage;
     }
 
     @Override
