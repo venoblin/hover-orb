@@ -21,7 +21,7 @@ public class HoverOrb extends Game {
 				Gdx.graphics.getHeight()
 		));
 		Gdx.input.setInputProcessor(stage);
-		setScreen(new MainMenuScreen(this, stage));
+		goToGame();
 	}
 
 	@Override
