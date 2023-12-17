@@ -21,6 +21,7 @@ public class BallActor extends Actor {
     private final float gravity = 5.0f;
     private final Vector2 velocity = new Vector2(0, 0);
     private final Vector2 maxVelocity = new Vector2(50, 300);
+    private boolean isGameOver = false;
 
     public BallActor(Texture texture) {
         this.texture = texture;
@@ -68,6 +69,10 @@ public class BallActor extends Actor {
     private void resetWidthHeight() {
         width = initialWidth;
         height = initialHeight;
+    }
+
+    public boolean isGameOver() {
+        return isGameOver;
     }
 
     @Override

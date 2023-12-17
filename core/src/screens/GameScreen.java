@@ -19,6 +19,7 @@ public class GameScreen implements Screen {
 
         ballTexture = new Texture("ball.png");
         ball = new BallActor(ballTexture);
+
         stage.addActor(ball);
     }
 
@@ -28,7 +29,9 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-
+        if (ball.isGameOver()) {
+            game.goToMainMenu();
+        }
     }
 
     @Override
@@ -48,7 +51,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void hide() {
-
+        stage.getRoot().removeActor(ball);
     }
 
     @Override
