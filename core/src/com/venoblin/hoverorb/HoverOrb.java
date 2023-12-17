@@ -1,6 +1,6 @@
 package com.venoblin.hoverorb;
 
-import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -10,7 +10,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 import actors.BallActor;
 
-public class HoverOrb extends ApplicationAdapter {
+public class HoverOrb extends Game {
 
 	private Stage stage;
 	private BallActor ball;
