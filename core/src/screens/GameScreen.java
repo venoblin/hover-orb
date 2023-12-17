@@ -10,7 +10,7 @@ import actors.BallActor;
 public class GameScreen implements Screen {
     private final HoverOrb game;
     private final Stage stage;
-    private BallActor ball;
+    private final BallActor ball;
     private Texture ballTexture;
 
     public GameScreen(HoverOrb game, Stage stage) {
