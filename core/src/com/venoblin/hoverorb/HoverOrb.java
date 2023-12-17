@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 import screens.GameScreen;
+import screens.MainMenuScreen;
 
 public class HoverOrb extends Game {
 
@@ -20,7 +21,7 @@ public class HoverOrb extends Game {
 				Gdx.graphics.getHeight()
 		));
 		Gdx.input.setInputProcessor(stage);
-		setScreen(new GameScreen(this, stage));
+		setScreen(new MainMenuScreen(this, stage));
 	}
 
 	@Override
@@ -34,5 +35,13 @@ public class HoverOrb extends Game {
 	@Override
 	public void dispose() {
 		stage.dispose();
+	}
+
+	public void goToGame() {
+		setScreen(new GameScreen(this, stage));
+	}
+
+	public void goToMainMenu() {
+		setScreen(new MainMenuScreen(this, stage));
 	}
 }
