@@ -22,6 +22,7 @@ public class BallActor extends Actor {
     private final Vector2 velocity = new Vector2(0, 0);
     private final Vector2 maxVelocity = new Vector2(50, 300);
     private boolean isGameOver = false;
+    private boolean isGameLive = false;
 
     public BallActor(Texture texture) {
         this.texture = texture;
@@ -89,6 +90,10 @@ public class BallActor extends Actor {
             setToStartPosition();
             velocity.y = 0;
             velocity.x = 0;
+
+            if (isGameLive) {
+                isGameOver = true;
+            }
         } else if (topSide >= Gdx.graphics.getHeight()) {
             velocity.y *= -1;
             updatePositionByVelocity(velocity.x, velocity.y);
@@ -101,6 +106,10 @@ public class BallActor extends Actor {
         }
 
         if (touchBounds.isTouched()) {
+            if (!isGameLive) {
+                isGameLive = true;
+            }
+
             float touchX = touchBounds.getTouchPoints().x;
             float middleRectPoint = touchRect.getMiddlePoint();
             height -= 150;

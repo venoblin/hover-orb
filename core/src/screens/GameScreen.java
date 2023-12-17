@@ -29,9 +29,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        if (ball.isGameOver()) {
-            game.goToMainMenu();
-        }
+
     }
 
     @Override
