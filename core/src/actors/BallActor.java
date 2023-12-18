@@ -79,6 +79,7 @@ public class BallActor extends Actor {
     @Override
     public void act(float delta) {
         super.act(delta);
+
         float leftSide = getX();
         float rightSide = getRight();
         float topSide = getTop();
