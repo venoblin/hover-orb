@@ -29,4 +29,5 @@ public class RectTouchDetection {
     public Vector2 getTouchPoints() {
         return new Vector2(touchX, touchY);
     }
+
 }
