@@ -5,14 +5,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-
-import com.venoblin.utils.Rect;
-import com.venoblin.utils.RectTouchDetection;
+import com.venoblin.inputhandling.TouchDetector;
 
 public class BallActor extends Actor {
     private Texture texture;
-    private Rect touchRect;
-    private RectTouchDetection touchBounds;
+    private final TouchDetector touchDetector;
     private int width = 300;
     private int height = 300;
     // initial width and height used to reset width and height
@@ -30,8 +27,7 @@ public class BallActor extends Actor {
         setSize(width, height);
         setToStartPosition();
 
-        touchRect = new Rect(getX(), getY(), width, height, 50);
-        touchBounds = new RectTouchDetection(touchRect);
+        touchDetector = new TouchDetector(this, 50);
     }
 
     private float determineCappedVelocity(float velocity, float maxVelocity) {
@@ -57,7 +53,7 @@ public class BallActor extends Actor {
         }
 
         setPosition(getX() + xVel, getY() + yVel);
-        touchRect.updatePosition(getX(), getY());
+        touchDetector.updateDetectorPosition(getX(), getY());
     }
 
     public void setToStartPosition() {
@@ -105,19 +101,19 @@ public class BallActor extends Actor {
             updatePositionByVelocity(velocity.x, velocity.y);
         }
 
-        if (touchBounds.isTouched()) {
+        if (touchDetector.isTouched()) {
             if (!isGameLive) {
                 isGameLive = true;
             }
 
-            float touchX = touchBounds.getTouchPoints().x;
-            float middleRectPoint = touchRect.getMiddlePoint();
+            float touchX = touchDetector.getTouchPoints().x;
+            float middlePoint = touchDetector.getDetectorMiddlePoint();
             height -= 150;
             velocity.y = 125f;
 
-            if (touchX < middleRectPoint - 25) {
+            if (touchX < middlePoint - 25) {
                 velocity.x += 5;
-            } else if (touchX > middleRectPoint + 25) {
+            } else if (touchX > middlePoint + 25) {
                 velocity.x -= 5;
             }
         } else {
