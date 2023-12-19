@@ -6,23 +6,23 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.venoblin.hoverorb.HoverOrb;
+import com.venoblin.ui.UI;
 
 public class MainMenuScreen extends ScreenAdapter implements Screen {
     private final HoverOrb game;
     private final Stage stage;
-    private final Table table;
+    private final UI ui;
     private final TextButton startBtn;
 
     public MainMenuScreen(final HoverOrb game, Stage stage) {
         this.game = game;
         this.stage = stage;
 
-        table = new Table();
-        table.setFillParent(true);
+        ui = new UI();
+        ui.setFillParent(true);
 
         startBtn = new TextButton("Start", new Skin(Gdx.files.internal("skins/uiskin.json")));
         startBtn.addListener(new ClickListener() {
@@ -32,9 +32,9 @@ public class MainMenuScreen extends ScreenAdapter implements Screen {
             }
         });
 
-        table.add(startBtn).size(300, 200);
+        ui.add(startBtn).size(300, 200);
 
-        stage.addActor(table);
+        stage.addActor(ui);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class MainMenuScreen extends ScreenAdapter implements Screen {
 
     @Override
     public void hide() {
-        stage.getRoot().removeActor(table);
+        stage.getRoot().removeActor(ui);
     }
 
     @Override
