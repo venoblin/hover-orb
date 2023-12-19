@@ -64,7 +64,7 @@ public class MainMenuScreen extends ScreenAdapter implements Screen {
 
     @Override
     public void hide() {
-        stage.getRoot().removeActor(ui);
+        ui.clear();
     }
 
     @Override

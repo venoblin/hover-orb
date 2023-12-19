@@ -6,14 +6,15 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.venoblin.hoverorb.HoverOrb;
-
 import com.venoblin.actors.BallActor;
+import com.venoblin.hoverorb.HoverOrb;
+import com.venoblin.ui.UI;
 
 public class GameScreen extends ScreenAdapter {
     private final HoverOrb game;
     private final Stage stage;
+    private final UI ui;
+    private final Label scoreLabel;
     private final BallActor ball;
     private Texture ballTexture;
 
@@ -24,15 +25,15 @@ public class GameScreen extends ScreenAdapter {
         ballTexture = new Texture("ball.png");
         ball = new BallActor(ballTexture);
 
-        Label score = new Label("0", new Skin(Gdx.files.internal("skins/uiskin.json")));
+        ui = new UI();
+        ui.setFillParent(true);
 
-        Table table = new Table();
-        table.setFillParent(true);
+        scoreLabel = new Label("0", new Skin(Gdx.files.internal("skins/uiskin.json")));
 
-        table.add(score);
+        ui.add(scoreLabel);
 
+        stage.addActor(ui);
         stage.addActor(ball);
-        stage.addActor(table);
     }
 
     @Override
@@ -65,6 +66,7 @@ public class GameScreen extends ScreenAdapter {
     @Override
     public void hide() {
         stage.getRoot().removeActor(ball);
+        ui.clear();
     }
 
     @Override
