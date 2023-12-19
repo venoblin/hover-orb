@@ -1,4 +1,4 @@
-package utils;
+package com.venoblin.utils;
 
 import com.badlogic.gdx.math.Rectangle;
 

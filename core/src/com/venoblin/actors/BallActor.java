@@ -1,4 +1,4 @@
-package actors;
+package com.venoblin.actors;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -6,8 +6,8 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-import utils.Rect;
-import utils.RectTouchDetection;
+import com.venoblin.utils.Rect;
+import com.venoblin.utils.RectTouchDetection;
 
 public class BallActor extends Actor {
     private Texture texture;
@@ -60,7 +60,7 @@ public class BallActor extends Actor {
         touchRect.updatePosition(getX(), getY());
     }
 
-    private void setToStartPosition() {
+    public void setToStartPosition() {
         setPosition(
                 Gdx.graphics.getWidth() / 2.0f - getWidth() / 2,
                 0
@@ -88,7 +88,6 @@ public class BallActor extends Actor {
         velocity.y -= gravity;
 
         if (bottomSide <= 0) {
-            setToStartPosition();
             velocity.y = 0;
             velocity.x = 0;
 

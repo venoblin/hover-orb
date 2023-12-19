@@ -1,4 +1,4 @@
-package screens;
+package com.venoblin.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;

@@ -7,8 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 
-import screens.GameScreen;
-import screens.MainMenuScreen;
+import com.venoblin.screens.GameScreen;
+import com.venoblin.screens.MainMenuScreen;
 
 public class HoverOrb extends Game {
 
@@ -26,7 +26,7 @@ public class HoverOrb extends Game {
 
 	@Override
 	public void render() {
-		ScreenUtils.clear(1, 0, 0, 1);
+		ScreenUtils.clear(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		screen.render(Gdx.graphics.getDeltaTime());
 		stage.act(Gdx.graphics.getDeltaTime());

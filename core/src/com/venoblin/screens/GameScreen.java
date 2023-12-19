@@ -1,11 +1,15 @@
-package screens;
+package com.venoblin.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.venoblin.hoverorb.HoverOrb;
 
-import actors.BallActor;
+import com.venoblin.actors.BallActor;
 
 public class GameScreen extends ScreenAdapter {
     private final HoverOrb game;
@@ -20,7 +24,15 @@ public class GameScreen extends ScreenAdapter {
         ballTexture = new Texture("ball.png");
         ball = new BallActor(ballTexture);
 
+        Label score = new Label("0", new Skin(Gdx.files.internal("skins/uiskin.json")));
+
+        Table table = new Table();
+        table.setFillParent(true);
+
+        table.add(score);
+
         stage.addActor(ball);
+        stage.addActor(table);
     }
 
     @Override
