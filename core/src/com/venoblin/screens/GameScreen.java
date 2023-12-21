@@ -16,7 +16,7 @@ public class GameScreen extends ScreenAdapter {
     private final UI ui;
     private final Label scoreLabel;
     private final BallActor ball;
-    private Texture ballTexture;
+    private final Texture ballTexture;
 
     public GameScreen(HoverOrb game, Stage stage) {
         this.game = game;
