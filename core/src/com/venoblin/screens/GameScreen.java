@@ -38,7 +38,7 @@ public class GameScreen extends ScreenAdapter {
         scoreLabel = new Label("0", new Skin(Gdx.files.internal("skins/uiskin.json")));
         scoreLabel.setFontScale(4);
 
-        pauseButton = new TextButton("Start", new Skin(Gdx.files.internal("skins/uiskin.json")));
+        pauseButton = new TextButton("Pause", new Skin(Gdx.files.internal("skins/uiskin.json")));
         pauseButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
