@@ -3,9 +3,12 @@ package com.venoblin.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.venoblin.actors.BallActor;
 import com.venoblin.hoverorb.HoverOrb;
 import com.venoblin.ui.UI;
@@ -15,6 +18,7 @@ public class GameScreen extends ScreenAdapter {
     private final Stage stage;
     private final UI ui;
     private final Label scoreLabel;
+    private final TextButton pauseButton;
     private final BallActor ball;
     private final Texture ballTexture;
 
@@ -34,7 +38,16 @@ public class GameScreen extends ScreenAdapter {
         scoreLabel = new Label("0", new Skin(Gdx.files.internal("skins/uiskin.json")));
         scoreLabel.setFontScale(4);
 
+        pauseButton = new TextButton("Start", new Skin(Gdx.files.internal("skins/uiskin.json")));
+        pauseButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                pause();
+            }
+        });
+
         ui.add(scoreLabel);
+        ui.add(pauseButton);
 
         stage.addActor(ui);
         stage.addActor(ball);
@@ -59,7 +72,7 @@ public class GameScreen extends ScreenAdapter {
 
     @Override
     public void pause() {
-
+        game.goToMainMenu();
     }
 
     @Override
