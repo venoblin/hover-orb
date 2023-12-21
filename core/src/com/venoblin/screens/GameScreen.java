@@ -30,8 +30,8 @@ public class GameScreen extends ScreenAdapter {
         ball = new BallActor(ballTexture);
 
         ui = new UI();
-//        ui.setFillParent(true);
         ui.top();
+        ui.left();
         ui.setPosition(100, Gdx.graphics.getHeight() - 200);
         ui.setSize(Gdx.graphics.getWidth(), 200);
 
@@ -46,8 +46,8 @@ public class GameScreen extends ScreenAdapter {
             }
         });
 
-        ui.add(scoreLabel);
-        ui.add(pauseButton);
+        ui.add(scoreLabel).expandX();
+        ui.add(pauseButton).expandX();
 
         stage.addActor(ui);
         stage.addActor(ball);

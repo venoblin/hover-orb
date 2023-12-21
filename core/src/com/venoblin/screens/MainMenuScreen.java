@@ -32,7 +32,7 @@ public class MainMenuScreen extends ScreenAdapter implements Screen {
             }
         });
 
-        ui.add(startBtn).size(300, 200);
+        ui.add(startBtn);
 
         stage.addActor(ui);
     }
