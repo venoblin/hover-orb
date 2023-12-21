@@ -63,6 +63,10 @@ public class GameScreen extends ScreenAdapter {
         if (ball.isGameOver()) {
             game.goToMainMenu();
         }
+
+        if (ball.isGameLive()) {
+            ui.removeActor(pauseButton);
+        }
     }
 
     @Override

@@ -72,6 +72,10 @@ public class BallActor extends Actor {
         return isGameOver;
     }
 
+    public boolean isGameLive() {
+        return isGameLive;
+    }
+
     @Override
     public void act(float delta) {
         super.act(delta);
