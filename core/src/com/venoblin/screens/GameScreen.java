@@ -32,6 +32,7 @@ public class GameScreen extends ScreenAdapter {
         ui.setSize(Gdx.graphics.getWidth(), 200);
 
         scoreLabel = new Label("0", new Skin(Gdx.files.internal("skins/uiskin.json")));
+        scoreLabel.setFontScale(4);
 
         ui.add(scoreLabel);
 
