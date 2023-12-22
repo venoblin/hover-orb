@@ -19,7 +19,9 @@ public class GameScreen extends ScreenAdapter {
     private final UI liveGameUi;
     private final UI pauseUi;
     private final Label scoreLabel;
-    private final TextButton pauseButton;
+    private final TextButton pauseBtn;
+    private final TextButton resumeBtn;
+    private final TextButton mainMenuBtn;
     private final BallActor ball;
     private final Texture ballTexture;
 
@@ -35,20 +37,24 @@ public class GameScreen extends ScreenAdapter {
 
         scoreLabel = new Label("0", new Skin(Gdx.files.internal("skins/uiskin.json")));
         scoreLabel.setFontScale(4);
-        pauseButton = new TextButton("Pause", new Skin(Gdx.files.internal("skins/uiskin.json")));
-        pauseButton.addListener(new ClickListener() {
+        pauseBtn = new TextButton("Pause", new Skin(Gdx.files.internal("skins/uiskin.json")));
+        pauseBtn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 pause();
             }
         });
 
+        resumeBtn = new TextButton("Resume", new Skin(Gdx.files.internal("skins/uiskins.json")));
+
+        mainMenuBtn = new TextButton("Main Menu", new Skin(Gdx.files.internal("skins/uiskins.json")));
+
         setToLiveGameUi();
         stage.addActor(ball);
     }
 
     private void setToPauseUi() {
-
+        pauseUi.setFillParent(true);
     }
 
     private void setToLiveGameUi() {
@@ -58,7 +64,7 @@ public class GameScreen extends ScreenAdapter {
         liveGameUi.setSize(Gdx.graphics.getWidth(), 200);
 
         liveGameUi.add(scoreLabel).expandX();
-        liveGameUi.add(pauseButton).expandX();
+        liveGameUi.add(pauseBtn).expandX();
 
         stage.addActor(liveGameUi);
     }
@@ -75,7 +81,7 @@ public class GameScreen extends ScreenAdapter {
         }
 
         if (ball.isGameLive()) {
-            liveGameUi.removeActor(pauseButton);
+            liveGameUi.removeActor(pauseBtn);
         }
     }
 
