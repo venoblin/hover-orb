@@ -45,14 +45,14 @@ public class GameScreen extends ScreenAdapter {
             }
         });
 
-        resumeBtn = new TextButton("Resume", new Skin(Gdx.files.internal("skins/uiskins.json")));
+        resumeBtn = new TextButton("Resume", new Skin(Gdx.files.internal("skins/uiskin.json")));
         resumeBtn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 resume();
             }
         });
-        mainMenuBtn = new TextButton("Main Menu", new Skin(Gdx.files.internal("skins/uiskins.json")));
+        mainMenuBtn = new TextButton("Main Menu", new Skin(Gdx.files.internal("skins/uiskin.json")));
         mainMenuBtn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -66,6 +66,10 @@ public class GameScreen extends ScreenAdapter {
 
     private void setToPauseUi() {
         pauseUi.setFillParent(true);
+        pauseUi.add(resumeBtn);
+        pauseUi.add(mainMenuBtn);
+
+        stage.addActor(pauseUi);
     }
 
     private void setToLiveGameUi() {
@@ -104,6 +108,7 @@ public class GameScreen extends ScreenAdapter {
     @Override
     public void pause() {
         hide();
+        setToPauseUi();
     }
 
     @Override
