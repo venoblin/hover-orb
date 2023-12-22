@@ -16,12 +16,9 @@ import com.venoblin.ui.UI;
 public class GameScreen extends ScreenAdapter {
     private final HoverOrb game;
     private final Stage stage;
-    private final UI liveGameUi;
-    private final UI pauseUi;
+    private final UI ui;
     private final Label scoreLabel;
     private final TextButton pauseBtn;
-    private final TextButton resumeBtn;
-    private final TextButton mainMenuBtn;
     private final BallActor ball;
     private final Texture ballTexture;
 
@@ -32,8 +29,11 @@ public class GameScreen extends ScreenAdapter {
         ballTexture = new Texture("ball.png");
         ball = new BallActor(ballTexture);
 
-        liveGameUi = new UI();
-        pauseUi = new UI();
+        ui = new UI();
+        ui.top();
+        ui.left();
+        ui.setPosition(100, Gdx.graphics.getHeight() - 200);
+        ui.setSize(Gdx.graphics.getWidth(), 200);
 
         scoreLabel = new Label("0", new Skin(Gdx.files.internal("skins/uiskin.json")));
         scoreLabel.setFontScale(4);
@@ -45,43 +45,11 @@ public class GameScreen extends ScreenAdapter {
             }
         });
 
-        resumeBtn = new TextButton("Resume", new Skin(Gdx.files.internal("skins/uiskin.json")));
-        resumeBtn.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                resume();
-            }
-        });
-        mainMenuBtn = new TextButton("Main Menu", new Skin(Gdx.files.internal("skins/uiskin.json")));
-        mainMenuBtn.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.goToMainMenu();
-            }
-        });
+        ui.add(scoreLabel).expandX();
+        ui.add(pauseBtn).expandX();
 
-        setToLiveGameUi();
+        stage.addActor(ui);
         stage.addActor(ball);
-    }
-
-    private void setToPauseUi() {
-        pauseUi.setFillParent(true);
-        pauseUi.add(resumeBtn);
-        pauseUi.add(mainMenuBtn);
-
-        stage.addActor(pauseUi);
-    }
-
-    private void setToLiveGameUi() {
-        liveGameUi.top();
-        liveGameUi.left();
-        liveGameUi.setPosition(100, Gdx.graphics.getHeight() - 200);
-        liveGameUi.setSize(Gdx.graphics.getWidth(), 200);
-
-        liveGameUi.add(scoreLabel).expandX();
-        liveGameUi.add(pauseBtn).expandX();
-
-        stage.addActor(liveGameUi);
     }
 
     @Override
@@ -96,7 +64,7 @@ public class GameScreen extends ScreenAdapter {
         }
 
         if (ball.isGameLive()) {
-            liveGameUi.removeActor(pauseBtn);
+            ui.removeActor(pauseBtn);
         }
     }
 
@@ -108,7 +76,6 @@ public class GameScreen extends ScreenAdapter {
     @Override
     public void pause() {
         hide();
-        setToPauseUi();
     }
 
     @Override
@@ -120,8 +87,7 @@ public class GameScreen extends ScreenAdapter {
     @Override
     public void hide() {
         stage.getRoot().removeActor(ball);
-        liveGameUi.clear();
-        pauseUi.clear();
+        ui.clear();
     }
 
     @Override
