@@ -75,12 +75,11 @@ public class GameScreen extends ScreenAdapter {
 
     @Override
     public void pause() {
-        hide();
+        game.goToPauseMenu();
     }
 
     @Override
     public void resume() {
-        hide();
         game.goToGame();
     }
 

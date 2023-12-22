@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 import com.venoblin.screens.GameScreen;
 import com.venoblin.screens.MainMenuScreen;
+import com.venoblin.screens.PauseScreen;
 
 public class HoverOrb extends Game {
 
@@ -44,5 +45,9 @@ public class HoverOrb extends Game {
 
 	public void goToMainMenu() {
 		setScreen(new MainMenuScreen(this, stage));
+	}
+
+	public void goToPauseMenu() {
+		setScreen(new PauseScreen(this, stage));
 	}
 }

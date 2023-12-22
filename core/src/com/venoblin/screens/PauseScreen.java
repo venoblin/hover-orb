@@ -11,11 +11,16 @@ import com.venoblin.hoverorb.HoverOrb;
 import com.venoblin.ui.UI;
 
 public class PauseScreen extends ScreenAdapter {
+    private final HoverOrb game;
+    private final Stage stage;
     private  final UI ui;
     private final TextButton resumeBtn;
     private final TextButton mainMenuBtn;
 
     public PauseScreen(final HoverOrb game, Stage stage) {
+        this.game = game;
+        this.stage = stage;
+
         ui = new UI();
         ui.setFillParent(true);
 
@@ -57,6 +62,7 @@ public class PauseScreen extends ScreenAdapter {
 
     @Override
     public void hide() {
+        ui.clear();
     }
 
     @Override
@@ -65,9 +71,12 @@ public class PauseScreen extends ScreenAdapter {
 
     @Override
     public void resume() {
+        game.goToGame();
     }
 
     @Override
     public void dispose() {
+        game.dispose();
+        stage.dispose();
     }
 }
