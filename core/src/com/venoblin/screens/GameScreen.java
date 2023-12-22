@@ -16,7 +16,8 @@ import com.venoblin.ui.UI;
 public class GameScreen extends ScreenAdapter {
     private final HoverOrb game;
     private final Stage stage;
-    private final UI ui;
+    private final UI liveGameUi;
+    private final UI pauseUi;
     private final Label scoreLabel;
     private final TextButton pauseButton;
     private final BallActor ball;
@@ -29,11 +30,13 @@ public class GameScreen extends ScreenAdapter {
         ballTexture = new Texture("ball.png");
         ball = new BallActor(ballTexture);
 
-        ui = new UI();
-        ui.top();
-        ui.left();
-        ui.setPosition(100, Gdx.graphics.getHeight() - 200);
-        ui.setSize(Gdx.graphics.getWidth(), 200);
+        liveGameUi = new UI();
+        pauseUi = new UI();
+
+        liveGameUi.top();
+        liveGameUi.left();
+        liveGameUi.setPosition(100, Gdx.graphics.getHeight() - 200);
+        liveGameUi.setSize(Gdx.graphics.getWidth(), 200);
 
         scoreLabel = new Label("0", new Skin(Gdx.files.internal("skins/uiskin.json")));
         scoreLabel.setFontScale(4);
@@ -46,11 +49,19 @@ public class GameScreen extends ScreenAdapter {
             }
         });
 
-        ui.add(scoreLabel).expandX();
-        ui.add(pauseButton).expandX();
+        liveGameUi.add(scoreLabel).expandX();
+        liveGameUi.add(pauseButton).expandX();
 
-        stage.addActor(ui);
+        stage.addActor(liveGameUi);
         stage.addActor(ball);
+    }
+
+    private void setToPauseUi() {
+
+    }
+
+    private void setToLiveGameUi() {
+        
     }
 
     @Override
@@ -76,7 +87,7 @@ public class GameScreen extends ScreenAdapter {
 
     @Override
     public void pause() {
-        game.goToMainMenu();
+        hide();
     }
 
     @Override
