@@ -113,7 +113,8 @@ public class GameScreen extends ScreenAdapter {
 
     @Override
     public void resume() {
-
+        hide();
+        game.goToGame();
     }
 
     @Override
