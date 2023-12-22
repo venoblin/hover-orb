@@ -25,7 +25,7 @@ public class GameScreen extends ScreenAdapter {
     private final BallActor ball;
     private final Texture ballTexture;
 
-    public GameScreen(HoverOrb game, Stage stage) {
+    public GameScreen(final HoverOrb game, Stage stage) {
         this.game = game;
         this.stage = stage;
 
@@ -46,8 +46,19 @@ public class GameScreen extends ScreenAdapter {
         });
 
         resumeBtn = new TextButton("Resume", new Skin(Gdx.files.internal("skins/uiskins.json")));
-
+        resumeBtn.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                resume();
+            }
+        });
         mainMenuBtn = new TextButton("Main Menu", new Skin(Gdx.files.internal("skins/uiskins.json")));
+        mainMenuBtn.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                game.goToMainMenu();
+            }
+        });
 
         setToLiveGameUi();
         stage.addActor(ball);
