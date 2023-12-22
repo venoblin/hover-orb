@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.venoblin.hoverorb.HoverOrb;
 import com.venoblin.ui.UI;
 
-public class PauseScreen {
+public class PauseScreen extends ScreenAdapter {
     private  final UI ui;
     private final TextButton resumeBtn;
     private final TextButton mainMenuBtn;
@@ -38,5 +38,36 @@ public class PauseScreen {
         ui.add(mainMenuBtn);
 
         stage.addActor(ui);
+    }
+
+    @Override
+    public void render(float delta) {
+
+    }
+
+    @Override
+    public void resize(int width, int height) {
+
+    }
+
+    @Override
+    public void show() {
+
+    }
+
+    @Override
+    public void hide() {
+    }
+
+    @Override
+    public void pause() {
+    }
+
+    @Override
+    public void resume() {
+    }
+
+    @Override
+    public void dispose() {
     }
 }
