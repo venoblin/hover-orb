@@ -50,7 +50,7 @@ public class GameScreen extends ScreenHandler {
         super.render(delta);
 
         if (ball.isGameOver()) {
-            game.goToMainMenu();
+            end();
         }
 
         if (ball.isGameLive()) {

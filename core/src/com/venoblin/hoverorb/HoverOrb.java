@@ -6,13 +6,13 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.venoblin.hoverorb.gamescreens.GameOverScreen;
 import com.venoblin.hoverorb.gamescreens.GameScreen;
 import com.venoblin.hoverorb.gamescreens.MainMenuScreen;
 import com.venoblin.hoverorb.gamescreens.PauseScreen;
 import com.venoblin.hoverorb.interfaces.GameInterface;
 
 public class HoverOrb extends Game implements GameInterface {
-
 	private Stage stage;
 
 	@Override
@@ -56,6 +56,6 @@ public class HoverOrb extends Game implements GameInterface {
 
 	@Override
 	public void goToGameOverMenu() {
-		setScreen(new GameScreen(this, stage));
+		setScreen(new GameOverScreen(this, stage));
 	}
 }

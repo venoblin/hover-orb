@@ -58,6 +58,10 @@ public class ScreenHandler extends ScreenAdapter {
         game.goToMainMenu();
     }
 
+    public void end() {
+        game.goToGameOverMenu();
+    }
+
     @Override
     public void dispose() {
         super.dispose();
