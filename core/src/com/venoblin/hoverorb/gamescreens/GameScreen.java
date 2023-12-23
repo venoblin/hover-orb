@@ -1,4 +1,4 @@
-package com.venoblin.hoverorb.screens;
+package com.venoblin.hoverorb.gamescreens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;

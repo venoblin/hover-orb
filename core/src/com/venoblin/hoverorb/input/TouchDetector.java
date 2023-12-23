@@ -1,4 +1,4 @@
-package com.venoblin.hoverorb.inputhandling;
+package com.venoblin.hoverorb.input;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
