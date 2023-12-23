@@ -7,9 +7,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 
-import com.venoblin.screens.GameScreen;
-import com.venoblin.screens.MainMenuScreen;
-import com.venoblin.screens.PauseScreen;
+import com.venoblin.hoverorb.screens.GameScreen;
+import com.venoblin.hoverorb.screens.MainMenuScreen;
+import com.venoblin.hoverorb.screens.PauseScreen;
 
 public class HoverOrb extends Game {
 

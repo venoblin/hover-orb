@@ -1,11 +1,11 @@
-package com.venoblin.actors;
+package com.venoblin.hoverorb.actors;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.venoblin.inputhandling.TouchDetector;
+import com.venoblin.hoverorb.inputhandling.TouchDetector;
 
 public class BallActor extends Actor {
     private Texture texture;

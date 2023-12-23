@@ -1,4 +1,4 @@
-package com.venoblin.ui;
+package com.venoblin.hoverorb.ui;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 

@@ -1,4 +1,4 @@
-package com.venoblin.screens;
+package com.venoblin.hoverorb.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.venoblin.hoverorb.HoverOrb;
-import com.venoblin.ui.UI;
+import com.venoblin.hoverorb.ui.UI;
 
 public class MainMenuScreen extends ScreenAdapter {
     private final HoverOrb game;
