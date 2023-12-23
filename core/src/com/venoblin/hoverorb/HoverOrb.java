@@ -22,7 +22,7 @@ public class HoverOrb extends Game implements GameInterface {
 				Gdx.graphics.getHeight()
 		));
 		Gdx.input.setInputProcessor(stage);
-		goToGame();
+		goToMainMenu();
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class HoverOrb extends Game implements GameInterface {
 	}
 
 	@Override
-	public void goToGameOverMenu() {
-		setScreen(new GameOverScreen(this, stage));
+	public void goToGameOverMenu(int score) {
+		setScreen(new GameOverScreen(this, stage, score));
 	}
 }

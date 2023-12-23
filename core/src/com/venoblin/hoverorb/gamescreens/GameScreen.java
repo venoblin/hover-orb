@@ -51,7 +51,7 @@ public class GameScreen extends ScreenHandler {
         super.render(delta);
 
         if (ball.isGameOver()) {
-            end();
+            end(score);
         }
 
         if (ball.isGameLive() && ball.isTouched()) {

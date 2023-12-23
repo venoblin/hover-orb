@@ -4,5 +4,5 @@ public interface GameInterface {
     void goToGame();
     void goToMainMenu();
     void goToPauseMenu();
-    void goToGameOverMenu();
+    void goToGameOverMenu(int score);
 }

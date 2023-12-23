@@ -58,8 +58,8 @@ public class ScreenHandler extends ScreenAdapter {
         game.goToMainMenu();
     }
 
-    public void end() {
-        game.goToGameOverMenu();
+    public void end(int score) {
+        game.goToGameOverMenu(score);
     }
 
     @Override
