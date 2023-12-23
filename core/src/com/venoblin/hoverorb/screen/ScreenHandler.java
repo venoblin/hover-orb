@@ -41,11 +41,21 @@ public class ScreenHandler extends ScreenAdapter {
     @Override
     public void pause() {
         super.pause();
+        game.goToPauseMenu();
     }
 
     @Override
     public void resume() {
         super.resume();
+        game.goToGame();
+    }
+
+    public void start() {
+        game.goToGame();
+    }
+
+    public void mainMenu() {
+        game.goToMainMenu();
     }
 
     @Override

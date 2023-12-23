@@ -29,46 +29,11 @@ public class PauseScreen extends ScreenHandler {
         mainMenuBtn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.goToMainMenu();
+                mainMenu();
             }
         });
 
         ui.add(resumeBtn);
         ui.add(mainMenuBtn);
-    }
-
-    @Override
-    public void render(float delta) {
-
-    }
-
-    @Override
-    public void resize(int width, int height) {
-
-    }
-
-    @Override
-    public void show() {
-
-    }
-
-    @Override
-    public void hide() {
-        ui.clear();
-    }
-
-    @Override
-    public void pause() {
-    }
-
-    @Override
-    public void resume() {
-        game.goToGame();
-    }
-
-    @Override
-    public void dispose() {
-        game.dispose();
-        stage.dispose();
     }
 }

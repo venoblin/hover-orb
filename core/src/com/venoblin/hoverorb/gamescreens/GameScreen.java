@@ -46,11 +46,6 @@ public class GameScreen extends ScreenHandler {
     }
 
     @Override
-    public void show() {
-        super.show();
-    }
-
-    @Override
     public void render(float delta) {
         super.render(delta);
 
@@ -61,23 +56,6 @@ public class GameScreen extends ScreenHandler {
         if (ball.isGameLive()) {
             ui.removeActor(pauseBtn);
         }
-    }
-
-    @Override
-    public void resize(int width, int height) {
-        super.resize(width, height);
-    }
-
-    @Override
-    public void pause() {
-        super.pause();
-        game.goToPauseMenu();
-    }
-
-    @Override
-    public void resume() {
-        super.resume();
-        game.goToGame();
     }
 
     @Override

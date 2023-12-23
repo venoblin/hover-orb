@@ -13,7 +13,7 @@ public class GameOverScreen extends ScreenHandler {
     private final TextButton retryBtn;
     private final TextButton mainMenuBtn;
 
-    public GameOverScreen(HoverOrb game, Stage stage) {
+    public GameOverScreen(final HoverOrb game, Stage stage) {
         super(game, stage);
 
         ui.setFillParent(true);
@@ -22,53 +22,18 @@ public class GameOverScreen extends ScreenHandler {
         retryBtn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-
+                resume();
             }
         });
         mainMenuBtn = new TextButton("Main Menu", new Skin(Gdx.files.internal("skins/uiskin.json")));
         mainMenuBtn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-
+                mainMenu();
             }
         });
 
         ui.add(retryBtn);
         ui.add(mainMenuBtn);
-    }
-
-    @Override
-    public void render(float delta) {
-        super.render(delta);
-    }
-
-    @Override
-    public void resize(int width, int height) {
-        super.resize(width, height);
-    }
-
-    @Override
-    public void show() {
-        super.show();
-    }
-
-    @Override
-    public void hide() {
-        super.hide();
-    }
-
-    @Override
-    public void pause() {
-        super.pause();
-    }
-
-    @Override
-    public void resume() {
-        super.resume();
-    }
-
-    @Override
-    public void dispose() {
-        super.dispose();
     }
 }

@@ -50,4 +50,8 @@ public class HoverOrb extends Game {
 	public void goToPauseMenu() {
 		setScreen(new PauseScreen(this, stage));
 	}
+
+	public void goToGameOverMenu() {
+		setScreen(new GameScreen(this, stage));
+	}
 }
