@@ -25,11 +25,6 @@ public class GameScreen extends ScreenHandler {
         ballTexture = new Texture("ball.png");
         ball = new BallActor(ballTexture);
 
-        ui.top();
-        ui.left();
-        ui.setPosition(100, Gdx.graphics.getHeight() - 200);
-        ui.setSize(Gdx.graphics.getWidth(), 200);
-
         scoreLabel = new Label(String.valueOf(score), new Skin(Gdx.files.internal("skins/uiskin.json")));
         scoreLabel.setFontScale(4);
         pauseBtn = new TextButton("Pause", new Skin(Gdx.files.internal("skins/uiskin.json")));
@@ -39,6 +34,11 @@ public class GameScreen extends ScreenHandler {
                 pause();
             }
         });
+
+        ui.top();
+        ui.left();
+        ui.setPosition(100, Gdx.graphics.getHeight() - 200);
+        ui.setSize(Gdx.graphics.getWidth(), 200);
 
         ui.add(scoreLabel).expandX();
         ui.add(pauseBtn).size(200, 80).expandX();

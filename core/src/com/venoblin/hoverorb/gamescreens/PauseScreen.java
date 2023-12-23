@@ -16,8 +16,6 @@ public class PauseScreen extends ScreenHandler {
     public PauseScreen(final HoverOrb game, Stage stage) {
         super(game, stage);
 
-        ui.setFillParent(true);
-
         resumeBtn = new TextButton("Resume", new Skin(Gdx.files.internal("skins/uiskin.json")));
         resumeBtn.addListener(new ClickListener() {
             @Override
@@ -32,6 +30,8 @@ public class PauseScreen extends ScreenHandler {
                 mainMenu();
             }
         });
+
+        ui.setFillParent(true);
 
         ui.add(resumeBtn).size(200, 80);
         ui.add(mainMenuBtn).size(200, 80);

@@ -16,8 +16,6 @@ public class MainMenuScreen extends ScreenHandler {
     public MainMenuScreen(final HoverOrb game, Stage stage) {
         super(game, stage);
 
-        ui.setFillParent(true);
-
         startBtn = new TextButton("Start", new Skin(Gdx.files.internal("skins/uiskin.json")));
         startBtn.addListener(new ClickListener() {
             @Override
@@ -25,6 +23,8 @@ public class MainMenuScreen extends ScreenHandler {
                 start();
             }
         });
+
+        ui.setFillParent(true);
 
         ui.add(startBtn).size(200, 80);
     }

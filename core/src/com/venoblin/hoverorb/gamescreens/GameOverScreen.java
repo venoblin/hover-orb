@@ -42,6 +42,7 @@ public class GameOverScreen extends ScreenHandler {
         });
 
         ui.setFillParent(true);
+
         if (score > topScore) {
             GamePreferences.setHighScore(score);
             highScoreLabel.setText("New High Score: " + String.valueOf(score));
