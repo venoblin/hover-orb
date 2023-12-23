@@ -8,12 +8,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.venoblin.hoverorb.HoverOrb;
-import com.venoblin.hoverorb.ui.UI;
+import com.venoblin.hoverorb.ui.UiHandler;
 
 public class PauseScreen extends ScreenAdapter {
     private final HoverOrb game;
     private final Stage stage;
-    private  final UI ui;
+    private  final UiHandler ui;
     private final TextButton resumeBtn;
     private final TextButton mainMenuBtn;
 
@@ -21,7 +21,7 @@ public class PauseScreen extends ScreenAdapter {
         this.game = game;
         this.stage = stage;
 
-        ui = new UI();
+        ui = new UiHandler();
         ui.setFillParent(true);
 
         resumeBtn = new TextButton("Resume", new Skin(Gdx.files.internal("skins/uiskin.json")));
