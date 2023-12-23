@@ -26,6 +26,6 @@ public class MainMenuScreen extends ScreenHandler {
             }
         });
 
-        ui.add(startBtn);
+        ui.add(startBtn).size(200, 80);
     }
 }

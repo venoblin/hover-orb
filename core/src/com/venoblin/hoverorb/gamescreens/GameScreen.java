@@ -41,7 +41,7 @@ public class GameScreen extends ScreenHandler {
         });
 
         ui.add(scoreLabel).expandX();
-        ui.add(pauseBtn).expandX();
+        ui.add(pauseBtn).size(200, 80).expandX();
 
         stage.addActor(ball);
     }

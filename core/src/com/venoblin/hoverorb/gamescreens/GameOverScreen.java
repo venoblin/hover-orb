@@ -33,7 +33,7 @@ public class GameOverScreen extends ScreenHandler {
             }
         });
 
-        ui.add(retryBtn);
-        ui.add(mainMenuBtn);
+        ui.add(retryBtn).size(200, 80);
+        ui.add(mainMenuBtn).size(200, 80);
     }
 }

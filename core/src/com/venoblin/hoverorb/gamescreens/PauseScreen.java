@@ -33,7 +33,7 @@ public class PauseScreen extends ScreenHandler {
             }
         });
 
-        ui.add(resumeBtn);
-        ui.add(mainMenuBtn);
+        ui.add(resumeBtn).size(200, 80);
+        ui.add(mainMenuBtn).size(200, 80);
     }
 }
