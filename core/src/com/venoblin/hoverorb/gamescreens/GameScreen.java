@@ -1,7 +1,6 @@
 package com.venoblin.hoverorb.gamescreens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -11,25 +10,20 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.venoblin.hoverorb.HoverOrb;
 import com.venoblin.hoverorb.actors.BallActor;
-import com.venoblin.hoverorb.ui.UiHandler;
+import com.venoblin.hoverorb.screen.ScreenHandler;
 
-public class GameScreen extends ScreenAdapter {
-    private final HoverOrb game;
-    private final Stage stage;
-    private final UiHandler ui;
+public class GameScreen extends ScreenHandler {
     private final Label scoreLabel;
     private final TextButton pauseBtn;
     private final BallActor ball;
     private final Texture ballTexture;
 
     public GameScreen(final HoverOrb game, Stage stage) {
-        this.game = game;
-        this.stage = stage;
+        super(game, stage);
 
         ballTexture = new Texture("ball.png");
         ball = new BallActor(ballTexture);
 
-        ui = new UiHandler();
         ui.top();
         ui.left();
         ui.setPosition(100, Gdx.graphics.getHeight() - 200);
@@ -48,17 +42,18 @@ public class GameScreen extends ScreenAdapter {
         ui.add(scoreLabel).expandX();
         ui.add(pauseBtn).expandX();
 
-        stage.addActor(ui);
         stage.addActor(ball);
     }
 
     @Override
     public void show() {
-
+        super.show();
     }
 
     @Override
     public void render(float delta) {
+        super.render(delta);
+
         if (ball.isGameOver()) {
             game.goToMainMenu();
         }
@@ -70,29 +65,31 @@ public class GameScreen extends ScreenAdapter {
 
     @Override
     public void resize(int width, int height) {
-
+        super.resize(width, height);
     }
 
     @Override
     public void pause() {
+        super.pause();
         game.goToPauseMenu();
     }
 
     @Override
     public void resume() {
+        super.resume();
         game.goToGame();
     }
 
     @Override
     public void hide() {
+        super.hide();
         stage.getRoot().removeActor(ball);
         ui.clear();
     }
 
     @Override
     public void dispose() {
+        super.dispose();
         ballTexture.dispose();
-        stage.dispose();
-        game.dispose();
     }
 }
