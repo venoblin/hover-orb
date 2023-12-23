@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
-
 import com.venoblin.hoverorb.gamescreens.GameScreen;
 import com.venoblin.hoverorb.gamescreens.MainMenuScreen;
 import com.venoblin.hoverorb.gamescreens.PauseScreen;
