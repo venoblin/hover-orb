@@ -1,10 +1,16 @@
 package com.venoblin.hoverorb.screen;
 
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.venoblin.hoverorb.HoverOrb;
 
 public class ScreenHandler extends ScreenAdapter {
-    public ScreenHandler() {
-        
+    private final HoverOrb game;
+    private final Stage stage;
+
+    public ScreenHandler(HoverOrb game, Stage stage) {
+        this.game = game;
+        this.stage = stage;
     }
 
     @Override
@@ -40,5 +46,7 @@ public class ScreenHandler extends ScreenAdapter {
     @Override
     public void dispose() {
         super.dispose();
+        stage.dispose();
+        game.dispose();
     }
 }
