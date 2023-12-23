@@ -17,6 +17,7 @@ public class GameScreen extends ScreenHandler {
     private final TextButton pauseBtn;
     private final BallActor ball;
     private final Texture ballTexture;
+    int score = 0;
 
     public GameScreen(final HoverOrb game, Stage stage) {
         super(game, stage);
@@ -29,7 +30,7 @@ public class GameScreen extends ScreenHandler {
         ui.setPosition(100, Gdx.graphics.getHeight() - 200);
         ui.setSize(Gdx.graphics.getWidth(), 200);
 
-        scoreLabel = new Label("0", new Skin(Gdx.files.internal("skins/uiskin.json")));
+        scoreLabel = new Label(String.valueOf(score), new Skin(Gdx.files.internal("skins/uiskin.json")));
         scoreLabel.setFontScale(4);
         pauseBtn = new TextButton("Pause", new Skin(Gdx.files.internal("skins/uiskin.json")));
         pauseBtn.addListener(new ClickListener() {
@@ -53,6 +54,11 @@ public class GameScreen extends ScreenHandler {
             end();
         }
 
+        if (ball.isGameLive() && ball.isTouched()) {
+            score++;
+            scoreLabel.setText(String.valueOf(score));
+        }
+
         if (ball.isGameLive()) {
             ui.removeActor(pauseBtn);
         }
@@ -62,6 +68,7 @@ public class GameScreen extends ScreenHandler {
     public void hide() {
         super.hide();
         stage.getRoot().removeActor(ball);
+        score = 0;
     }
 
     @Override

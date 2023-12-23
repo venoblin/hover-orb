@@ -76,6 +76,10 @@ public class BallActor extends Actor {
         return isGameLive;
     }
 
+    public boolean isTouched() {
+        return touchDetector.isTouched();
+    }
+
     @Override
     public void act(float delta) {
         super.act(delta);
