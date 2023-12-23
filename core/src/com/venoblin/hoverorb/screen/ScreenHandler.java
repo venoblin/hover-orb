@@ -3,14 +3,21 @@ package com.venoblin.hoverorb.screen;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.venoblin.hoverorb.HoverOrb;
+import com.venoblin.hoverorb.ui.UiHandler;
 
 public class ScreenHandler extends ScreenAdapter {
     private final HoverOrb game;
     private final Stage stage;
+    private final UiHandler ui;
 
     public ScreenHandler(HoverOrb game, Stage stage) {
         this.game = game;
         this.stage = stage;
+        ui = new UiHandler();
+    }
+
+    public UiHandler uiHandler() {
+        return ui;
     }
 
     @Override
