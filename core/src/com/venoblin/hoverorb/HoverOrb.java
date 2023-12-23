@@ -10,8 +10,9 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.venoblin.hoverorb.gamescreens.GameScreen;
 import com.venoblin.hoverorb.gamescreens.MainMenuScreen;
 import com.venoblin.hoverorb.gamescreens.PauseScreen;
+import com.venoblin.hoverorb.interfaces.GameInterface;
 
-public class HoverOrb extends Game {
+public class HoverOrb extends Game implements GameInterface {
 
 	private Stage stage;
 
@@ -39,18 +40,22 @@ public class HoverOrb extends Game {
 		stage.dispose();
 	}
 
+	@Override
 	public void goToGame() {
 		setScreen(new GameScreen(this, stage));
 	}
 
+	@Override
 	public void goToMainMenu() {
 		setScreen(new MainMenuScreen(this, stage));
 	}
 
+	@Override
 	public void goToPauseMenu() {
 		setScreen(new PauseScreen(this, stage));
 	}
 
+	@Override
 	public void goToGameOverMenu() {
 		setScreen(new GameScreen(this, stage));
 	}
