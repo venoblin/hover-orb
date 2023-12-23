@@ -1,26 +1,21 @@
 package com.venoblin.hoverorb.gamescreens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.venoblin.hoverorb.HoverOrb;
-import com.venoblin.hoverorb.ui.UiHandler;
+import com.venoblin.hoverorb.screen.ScreenHandler;
 
-public class MainMenuScreen extends ScreenAdapter {
-    private final HoverOrb game;
-    private final Stage stage;
-    private final UiHandler ui;
+public class MainMenuScreen extends ScreenHandler {
+
     private final TextButton startBtn;
 
     public MainMenuScreen(final HoverOrb game, Stage stage) {
-        this.game = game;
-        this.stage = stage;
+        super(game, stage);
 
-        ui = new UiHandler();
         ui.setFillParent(true);
 
         startBtn = new TextButton("Start", new Skin(Gdx.files.internal("skins/uiskin.json")));
@@ -32,43 +27,40 @@ public class MainMenuScreen extends ScreenAdapter {
         });
 
         ui.add(startBtn);
-
-        stage.addActor(ui);
     }
 
     @Override
     public void show() {
-
+        super.show();
     }
 
     @Override
     public void render(float delta) {
-
+        super.render(delta);
     }
 
     @Override
     public void resize(int width, int height) {
-
+        super.resize(width, height);
     }
 
     @Override
     public void pause() {
-
+        super.pause();
     }
 
     @Override
     public void resume() {
-
+        super.resume();
     }
 
     @Override
     public void hide() {
-        ui.clear();
+        super.hide();
     }
 
     @Override
     public void dispose() {
-        stage.dispose();
-        game.dispose();
+        super.dispose();
     }
 }

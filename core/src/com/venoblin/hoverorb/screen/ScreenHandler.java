@@ -35,6 +35,7 @@ public class ScreenHandler extends ScreenAdapter {
     @Override
     public void hide() {
         super.hide();
+        ui.clear();
     }
 
     @Override

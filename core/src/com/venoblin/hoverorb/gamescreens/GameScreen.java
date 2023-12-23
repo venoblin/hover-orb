@@ -84,7 +84,6 @@ public class GameScreen extends ScreenHandler {
     public void hide() {
         super.hide();
         stage.getRoot().removeActor(ball);
-        ui.clear();
     }
 
     @Override
