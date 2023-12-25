@@ -19,7 +19,7 @@ public class GameScreen extends ScreenHandler {
     private final Texture ballTexture;
     int score = 0;
 
-    public GameScreen(final HoverOrb game, Stage stage) {
+    public GameScreen(final HoverOrb game, final Stage stage) {
         super(game, stage);
 
         ballTexture = new Texture("ball.png");

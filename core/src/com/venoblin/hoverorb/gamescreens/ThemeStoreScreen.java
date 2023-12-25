@@ -9,10 +9,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.venoblin.hoverorb.HoverOrb;
 import com.venoblin.hoverorb.screen.ScreenHandler;
 
-public class ThemeScreen extends ScreenHandler {
+public class ThemeStoreScreen extends ScreenHandler {
     private final TextButton okBtn;
 
-    public ThemeScreen(HoverOrb game, Stage stage) {
+    public ThemeStoreScreen(final HoverOrb game, final Stage stage) {
         super(game, stage);
 
         okBtn = new TextButton("Ok", new Skin(Gdx.files.internal("skins/uiskin.json")));

@@ -10,6 +10,7 @@ import com.venoblin.hoverorb.gamescreens.GameOverScreen;
 import com.venoblin.hoverorb.gamescreens.GameScreen;
 import com.venoblin.hoverorb.gamescreens.MainMenuScreen;
 import com.venoblin.hoverorb.gamescreens.PauseScreen;
+import com.venoblin.hoverorb.gamescreens.ThemeStoreScreen;
 import com.venoblin.hoverorb.interfaces.GameInterface;
 
 public class HoverOrb extends Game implements GameInterface {
@@ -61,6 +62,6 @@ public class HoverOrb extends Game implements GameInterface {
 
 	@Override
 	public void goToThemeStore() {
-		setScreen(new GameScreen(this, stage));
+		setScreen(new ThemeStoreScreen(this, stage));
 	}
 }

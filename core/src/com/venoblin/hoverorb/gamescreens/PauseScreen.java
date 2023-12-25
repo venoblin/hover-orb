@@ -13,7 +13,7 @@ public class PauseScreen extends ScreenHandler {
     private final TextButton resumeBtn;
     private final TextButton mainMenuBtn;
 
-    public PauseScreen(final HoverOrb game, Stage stage) {
+    public PauseScreen(final HoverOrb game, final Stage stage) {
         super(game, stage);
 
         resumeBtn = new TextButton("Resume", new Skin(Gdx.files.internal("skins/uiskin.json")));

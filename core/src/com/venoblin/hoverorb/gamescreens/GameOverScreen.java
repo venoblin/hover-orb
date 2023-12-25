@@ -18,7 +18,7 @@ public class GameOverScreen extends ScreenHandler {
     private final Label highScoreLabel;
     private final int fontSize = 6;
 
-    public GameOverScreen(final HoverOrb game, Stage stage, int score) {
+    public GameOverScreen(final HoverOrb game, final Stage stage, int score) {
         super(game, stage);
         int topScore = GamePreferences.loadHighScore();
 
