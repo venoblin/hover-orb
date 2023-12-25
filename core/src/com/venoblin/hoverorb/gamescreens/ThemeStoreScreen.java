@@ -23,6 +23,8 @@ public class ThemeStoreScreen extends ScreenHandler {
             }
         });
 
+        ui.setFillParent(true);
+
         ui.add(okBtn).size(200, 80);
     }
 }
