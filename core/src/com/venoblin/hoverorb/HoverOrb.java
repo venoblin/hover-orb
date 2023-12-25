@@ -58,4 +58,9 @@ public class HoverOrb extends Game implements GameInterface {
 	public void goToGameOverMenu(int score) {
 		setScreen(new GameOverScreen(this, stage, score));
 	}
+
+	@Override
+	public void goToThemeStore() {
+		setScreen(new GameScreen(this, stage));
+	}
 }

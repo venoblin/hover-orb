@@ -58,6 +58,10 @@ public class ScreenHandler extends ScreenAdapter {
         game.goToMainMenu();
     }
 
+    public void themeStore() {
+        game.goToThemeStore();
+    }
+
     public void end(int score) {
         game.goToGameOverMenu(score);
     }

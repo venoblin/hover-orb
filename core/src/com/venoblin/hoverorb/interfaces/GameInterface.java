@@ -5,4 +5,5 @@ public interface GameInterface {
     void goToMainMenu();
     void goToPauseMenu();
     void goToGameOverMenu(int score);
+    void goToThemeStore();
 }
