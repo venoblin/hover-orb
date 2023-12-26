@@ -22,7 +22,7 @@ public class GameScreen extends ScreenHandler {
     public GameScreen(final HoverOrb game, final Stage stage) {
         super(game, stage);
 
-        ballTexture = new Texture("ball.png");
+        ballTexture = new Texture("balls/ball_1.png");
         ball = new BallActor(ballTexture);
 
         scoreLabel = new Label(String.valueOf(score), new Skin(Gdx.files.internal("skins/uiskin.json")));
