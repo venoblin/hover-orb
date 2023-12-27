@@ -44,6 +44,10 @@ public class HoverOrb extends Game implements GameInterface {
 		ballTexture.dispose();
 	}
 
+	public void updateBallTexture(Texture ballTexture) {
+		this.ballTexture = ballTexture;
+	}
+
 	@Override
 	public void goToGame() {
 		setScreen(new GameScreen(this, stage, ballTexture));
