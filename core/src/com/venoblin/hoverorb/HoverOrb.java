@@ -44,6 +44,10 @@ public class HoverOrb extends Game implements GameInterface {
 		ballTexture.dispose();
 	}
 
+	public Texture getBallTexture() {
+		return ballTexture;
+	}
+
 	public void updateBallTexture(Texture ballTexture) {
 		this.ballTexture = ballTexture;
 	}
