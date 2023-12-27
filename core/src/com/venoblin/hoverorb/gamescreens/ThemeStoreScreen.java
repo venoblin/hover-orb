@@ -42,6 +42,12 @@ public class ThemeStoreScreen extends ScreenHandler {
                 Texture ballTexture = new Texture(ball);
                 ballsTexturesArr.add(ballTexture);
                 Image ballImg = new Image(ballTexture);
+                ballImg.addListener(new ClickListener() {
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        mainMenu();
+                    }
+                });
                 ballsTable.add(ballImg);
             }
         }
