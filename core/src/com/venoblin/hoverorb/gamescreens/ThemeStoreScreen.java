@@ -13,14 +13,18 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.venoblin.hoverorb.HoverOrb;
 import com.venoblin.hoverorb.screen.ScreenHandler;
 
+import java.util.ArrayList;
+
 public class ThemeStoreScreen extends ScreenHandler {
     private final Table ballsTable;
     private final TextButton okBtn;
+    private final ArrayList<Texture> ballsArr;
 
     public ThemeStoreScreen(final HoverOrb game, final Stage stage) {
         super(game, stage);
 
         ballsTable = new Table();
+        ballsArr = new ArrayList<Texture>();
 
         okBtn = new TextButton("Ok", new Skin(Gdx.files.internal("skins/uiskin.json")));
         okBtn.addListener(new ClickListener() {
@@ -36,6 +40,7 @@ public class ThemeStoreScreen extends ScreenHandler {
 
             for (FileHandle ball : balls) {
                 Texture ballTexture = new Texture(ball);
+                ballsArr.add(ballTexture);
                 Image ballImg = new Image(ballTexture);
                 ballsTable.add(ballImg);
             }
