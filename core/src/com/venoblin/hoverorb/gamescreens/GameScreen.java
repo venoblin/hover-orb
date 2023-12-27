@@ -19,10 +19,10 @@ public class GameScreen extends ScreenHandler {
     private final Texture ballTexture;
     int score = 0;
 
-    public GameScreen(final HoverOrb game, final Stage stage) {
+    public GameScreen(final HoverOrb game, final Stage stage, Texture ballTexture) {
         super(game, stage);
+        this.ballTexture = ballTexture;
 
-        ballTexture = new Texture("balls/ball_1.png");
         ball = new BallActor(ballTexture);
 
         scoreLabel = new Label(String.valueOf(score), new Skin(Gdx.files.internal("skins/uiskin.json")));

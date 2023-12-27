@@ -3,6 +3,7 @@ package com.venoblin.hoverorb;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
@@ -15,9 +16,11 @@ import com.venoblin.hoverorb.interfaces.GameInterface;
 
 public class HoverOrb extends Game implements GameInterface {
 	private Stage stage;
+	private Texture ballTexture;
 
 	@Override
 	public void create() {
+		ballTexture = new Texture("balls/ball_1.png");
 		stage = new Stage(new StretchViewport(
 				Gdx.graphics.getWidth(),
 				Gdx.graphics.getHeight()
@@ -38,11 +41,12 @@ public class HoverOrb extends Game implements GameInterface {
 	@Override
 	public void dispose() {
 		stage.dispose();
+		ballTexture.dispose();
 	}
 
 	@Override
 	public void goToGame() {
-		setScreen(new GameScreen(this, stage));
+		setScreen(new GameScreen(this, stage, ballTexture));
 	}
 
 	@Override
