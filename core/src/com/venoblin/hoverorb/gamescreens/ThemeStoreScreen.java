@@ -40,7 +40,6 @@ public class ThemeStoreScreen extends ScreenHandler {
 
             for (FileHandle ball : balls) {
                 final Texture ballTexture = new Texture(ball);
-
                 ballsTexturesArr.add(ballTexture);
                 Image ballImg = new Image(ballTexture);
                 ballImg.addListener(new ClickListener() {
