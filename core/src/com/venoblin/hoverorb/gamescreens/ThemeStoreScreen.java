@@ -3,6 +3,7 @@ package com.venoblin.hoverorb.gamescreens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -42,7 +43,7 @@ public class ThemeStoreScreen extends ScreenHandler {
             for (FileHandle ball : balls) {
                 final Texture ballTexture = new Texture(ball);
                 ballsTexturesArr.add(ballTexture);
-                Image ballImg = new Image(ballTexture);
+                Image ballImg = new Image(addStrokeToTexture(ballTexture, 5, Color.CORAL));
                 ballImg.addListener(new ClickListener() {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -60,9 +61,12 @@ public class ThemeStoreScreen extends ScreenHandler {
         ui.add(okBtn).size(200, 80);
     }
 
-    private Image addStrokeToImage(Image image, int strokeWidth, Color strokeColor) {
+    private Texture addStrokeToTexture(Texture texture, int strokeWidth, Color strokeColor) {
+        Pixmap pixmap = new Pixmap((int) texture.getWidth(), (int) texture.getHeight(), Pixmap.Format.RGB565);
 
-        return image;
+        pixmap.setColor(strokeColor);
+
+        return new Texture(pixmap);
     }
 
     @Override
