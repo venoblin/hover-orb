@@ -2,6 +2,7 @@ package com.venoblin.hoverorb.gamescreens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -39,7 +40,7 @@ public class ThemeStoreScreen extends ScreenHandler {
             FileHandle[] balls = ballsHandle.list();
 
             for (FileHandle ball : balls) {
-                final Texture ballTexture = new Texture(ball);
+                final Texture ballTexture = addStrokeToTexture(new Texture(ball), 2, 0xFF000000);
                 ballsTexturesArr.add(ballTexture);
                 Image ballImg = new Image(ballTexture);
                 ballImg.addListener(new ClickListener() {
@@ -57,6 +58,29 @@ public class ThemeStoreScreen extends ScreenHandler {
         ui.add(ballsTable);
         ui.row();
         ui.add(okBtn).size(200, 80);
+    }
+
+    private Texture addStrokeToTexture(Texture texture, int strokeWidth, int strokeColor) {
+        Pixmap originalPixmap = new Pixmap(texture.getWidth(), texture.getHeight(), Pixmap.Format.RGBA8888);
+        originalPixmap.drawPixmap(texture.getTextureData().consumePixmap(), 0, 0);
+
+        Pixmap newPixmap = new Pixmap(texture.getWidth() + 2 * strokeWidth, texture.getHeight() + 2 * strokeWidth, Pixmap.Format.RGBA8888);
+        newPixmap.setColor(strokeColor);
+
+        // Fill the entire new pixmap with the stroke color
+        newPixmap.fillRectangle(0, 0, newPixmap.getWidth(), newPixmap.getHeight());
+
+        // Draw the original texture onto the new pixmap
+        newPixmap.drawPixmap(originalPixmap, strokeWidth, strokeWidth);
+
+        // Create a new texture from the combined pixmap
+        Texture resultTexture = new Texture(newPixmap);
+
+        // Dispose of the original and new pixmaps
+        originalPixmap.dispose();
+        newPixmap.dispose();
+
+        return resultTexture;
     }
 
     @Override
