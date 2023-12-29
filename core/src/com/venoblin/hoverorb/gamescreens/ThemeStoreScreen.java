@@ -43,7 +43,7 @@ public class ThemeStoreScreen extends ScreenHandler {
             for (FileHandle ball : balls) {
                 final Texture ballTexture = new Texture(ball);
                 ballsTexturesArr.add(ballTexture);
-                Image ballImg = new Image(addStrokeToTexture(ballTexture, 5, Color.CORAL));
+                Image ballImg = new Image(addStrokeToTexture(ballTexture, Color.GOLD));
                 ballImg.addListener(new ClickListener() {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -61,10 +61,11 @@ public class ThemeStoreScreen extends ScreenHandler {
         ui.add(okBtn).size(200, 80);
     }
 
-    private Texture addStrokeToTexture(Texture texture, int strokeWidth, Color strokeColor) {
-        Pixmap pixmap = new Pixmap((int) texture.getWidth(), (int) texture.getHeight(), Pixmap.Format.RGB565);
+    private Texture addStrokeToTexture(Texture texture, Color strokeColor) {
+        Pixmap pixmap = new Pixmap(300, 300, Pixmap.Format.RGB565);
 
         pixmap.setColor(strokeColor);
+        pixmap.drawRectangle(0, 0, pixmap.getWidth(), pixmap.getHeight());
 
         return new Texture(pixmap);
     }
