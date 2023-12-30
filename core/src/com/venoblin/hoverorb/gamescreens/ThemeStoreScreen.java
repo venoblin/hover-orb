@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.venoblin.hoverorb.HoverOrb;
 import com.venoblin.hoverorb.graphics.Graphics;
+import com.venoblin.hoverorb.preferences.GamePreferences;
 import com.venoblin.hoverorb.screen.ScreenHandler;
 
 import java.util.ArrayList;
@@ -69,6 +70,7 @@ public class ThemeStoreScreen extends ScreenHandler {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.updateBallHandle(ballHandle);
+                GamePreferences.setCurrentBall(ballHandle.path());
                 ballsTable.clear();
                 updateSelectedBall();
             }
