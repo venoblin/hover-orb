@@ -15,15 +15,17 @@ import com.venoblin.hoverorb.HoverOrb;
 import com.venoblin.hoverorb.graphics.Graphics;
 import com.venoblin.hoverorb.screen.ScreenHandler;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class ThemeStoreScreen extends ScreenHandler {
     private final Table ballsTable;
     private final TextButton okBtn;
+    private final ArrayList<Texture> ballTextures;
 
     public ThemeStoreScreen(final HoverOrb game, final Stage stage) {
         super(game, stage);
-
+        ballTextures = new ArrayList<>();
         ballsTable = new Table();
 
         okBtn = new TextButton("Ok", new Skin(Gdx.files.internal("skins/uiskin.json")));
@@ -40,25 +42,11 @@ public class ThemeStoreScreen extends ScreenHandler {
 
             for (final FileHandle ball : balls) {
                 if (Objects.equals(ball, game.getBallHandle())) {
-                    Image ballImg = new Image(Graphics.addStrokeToTexture(ball, Color.GOLD));
-                    ballImg.addListener(new ClickListener() {
-                        @Override
-                        public void clicked(InputEvent event, float x, float y) {
-                            game.updateBallHandle(ball);
-                        }
-                    });
 
-                    ballsTable.add(ballImg);
+                    ballsTable.add(generateImage(ball, Graphics.addStrokeToTexture(ball, Color.GOLD)));
                 } else {
-                    Image ballImg = new Image(new Texture(ball));
-                    ballImg.addListener(new ClickListener() {
-                        @Override
-                        public void clicked(InputEvent event, float x, float y) {
-                            game.updateBallHandle(ball);
-                        }
-                    });
 
-                    ballsTable.add(ballImg);
+                    ballsTable.add(generateImage(ball, new Texture(ball)));
                 }
             }
         }
@@ -68,6 +56,19 @@ public class ThemeStoreScreen extends ScreenHandler {
         ui.add(ballsTable);
         ui.row();
         ui.add(okBtn).size(200, 80);
+    }
+
+    private Image generateImage(final FileHandle ballHandle, final Texture ballTexture) {
+        Image ballImage = new Image(ballTexture);
+
+        ballImage.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                game.updateBallHandle(ballHandle);
+            }
+        });
+
+        return ballImage;
     }
 
     @Override
