@@ -20,13 +20,11 @@ import java.util.ArrayList;
 public class ThemeStoreScreen extends ScreenHandler {
     private final Table ballsTable;
     private final TextButton okBtn;
-    private final ArrayList<Texture> ballsTexturesArr;
 
     public ThemeStoreScreen(final HoverOrb game, final Stage stage) {
         super(game, stage);
 
         ballsTable = new Table();
-        ballsTexturesArr = new ArrayList<Texture>();
 
         okBtn = new TextButton("Ok", new Skin(Gdx.files.internal("skins/uiskin.json")));
         okBtn.addListener(new ClickListener() {
@@ -42,7 +40,10 @@ public class ThemeStoreScreen extends ScreenHandler {
 
             for (FileHandle ball : balls) {
                 final Texture ballTexture = new Texture(ball);
-                ballsTexturesArr.add(ballTexture);
+                if (ballTexture.equals(game.getBallTexture())) {
+
+                }
+
                 Image ballImg = new Image(Graphics.addStrokeToTexture(ball, Color.GOLD));
                 ballImg.addListener(new ClickListener() {
                     @Override
@@ -50,7 +51,9 @@ public class ThemeStoreScreen extends ScreenHandler {
                         game.updateBallTexture(ballTexture);
                     }
                 });
+
                 ballsTable.add(ballImg);
+                ballTexture.dispose();
             }
         }
 
@@ -64,9 +67,5 @@ public class ThemeStoreScreen extends ScreenHandler {
     @Override
     public void dispose() {
         super.dispose();
-
-        for (Texture ball : ballsTexturesArr) {
-            ball.dispose();
-        }
     }
 }
