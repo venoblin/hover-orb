@@ -68,11 +68,16 @@ public class ThemeStoreScreen extends ScreenHandler {
             }
         });
 
+        ballTextures.add(ballTexture);
         return ballImage;
     }
 
     @Override
     public void dispose() {
         super.dispose();
+
+        for (Texture texture : ballTextures) {
+            texture.dispose();
+        }
     }
 }
