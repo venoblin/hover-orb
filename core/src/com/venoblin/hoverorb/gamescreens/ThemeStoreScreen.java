@@ -36,20 +36,7 @@ public class ThemeStoreScreen extends ScreenHandler {
             }
         });
 
-        FileHandle ballsHandle = Gdx.files.internal("balls");
-        if (ballsHandle.isDirectory()) {
-            FileHandle[] balls = ballsHandle.list();
-
-            for (final FileHandle ball : balls) {
-                if (Objects.equals(ball, game.getBallHandle())) {
-
-                    ballsTable.add(generateImage(ball, Graphics.addStrokeToTexture(ball, Color.GOLD)));
-                } else {
-
-                    ballsTable.add(generateImage(ball, new Texture(ball)));
-                }
-            }
-        }
+        updateSelectedBall();
 
         ui.setFillParent(true);
 
@@ -58,13 +45,32 @@ public class ThemeStoreScreen extends ScreenHandler {
         ui.add(okBtn).size(200, 80);
     }
 
-    private Image generateImage(final FileHandle ballHandle, final Texture ballTexture) {
+    private void updateSelectedBall() {
+        FileHandle ballsHandle = Gdx.files.internal("balls");
+        if (ballsHandle.isDirectory()) {
+            FileHandle[] balls = ballsHandle.list();
+
+            for (final FileHandle ball : balls) {
+                if (Objects.equals(ball, game.getBallHandle())) {
+
+                    ballsTable.add(generateImage(ball, Graphics.addStrokeToTexture(ball, Color.GOLD), ballsTable));
+                } else {
+
+                    ballsTable.add(generateImage(ball, new Texture(ball), ballsTable));
+                }
+            }
+        }
+    }
+
+    private Image generateImage(final FileHandle ballHandle, final Texture ballTexture, final Table ballsTable) {
         Image ballImage = new Image(ballTexture);
 
         ballImage.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.updateBallHandle(ballHandle);
+                ballsTable.clear();
+                updateSelectedBall();
             }
         });
 
