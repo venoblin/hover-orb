@@ -4,7 +4,6 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
@@ -14,6 +13,7 @@ import com.venoblin.hoverorb.gamescreens.MainMenuScreen;
 import com.venoblin.hoverorb.gamescreens.PauseScreen;
 import com.venoblin.hoverorb.gamescreens.ThemeStoreScreen;
 import com.venoblin.hoverorb.interfaces.GameInterface;
+import com.venoblin.hoverorb.preferences.GamePreferences;
 
 public class HoverOrb extends Game implements GameInterface {
 	private Stage stage;
@@ -21,7 +21,7 @@ public class HoverOrb extends Game implements GameInterface {
 
 	@Override
 	public void create() {
-		ballHandle = Gdx.files.internal("balls/ball_2.png");
+		ballHandle = Gdx.files.internal(GamePreferences.loadCurrentBall());
 		stage = new Stage(new StretchViewport(
 				Gdx.graphics.getWidth(),
 				Gdx.graphics.getHeight()
