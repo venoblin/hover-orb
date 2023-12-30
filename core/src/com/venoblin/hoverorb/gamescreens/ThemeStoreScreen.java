@@ -38,24 +38,23 @@ public class ThemeStoreScreen extends ScreenHandler {
         if (ballsHandle.isDirectory()) {
             FileHandle[] balls = ballsHandle.list();
 
-            for (FileHandle ball : balls) {
-                final Texture ballTexture = new Texture(ball);
+            for (final FileHandle ball : balls) {
                 if (Objects.equals(ball, game.getBallHandle())) {
                     Image ballImg = new Image(Graphics.addStrokeToTexture(ball, Color.GOLD));
                     ballImg.addListener(new ClickListener() {
                         @Override
                         public void clicked(InputEvent event, float x, float y) {
-                            game.updateBallTexture(ballTexture);
+                            game.updateBallHandle(ball);
                         }
                     });
 
                     ballsTable.add(ballImg);
                 } else {
-                    Image ballImg = new Image(ballTexture);
+                    Image ballImg = new Image(new Texture(ball));
                     ballImg.addListener(new ClickListener() {
                         @Override
                         public void clicked(InputEvent event, float x, float y) {
-                            game.updateBallTexture(ballTexture);
+                            game.updateBallHandle(ball);
                         }
                     });
 

@@ -1,6 +1,7 @@
 package com.venoblin.hoverorb.gamescreens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -19,10 +20,9 @@ public class GameScreen extends ScreenHandler {
     private final Texture ballTexture;
     int score = 0;
 
-    public GameScreen(final HoverOrb game, final Stage stage, Texture ballTexture) {
+    public GameScreen(final HoverOrb game, final Stage stage, FileHandle ballHandle) {
         super(game, stage);
-        this.ballTexture = ballTexture;
-
+        ballTexture = new Texture(ballHandle);
         ball = new BallActor(ballTexture);
 
         scoreLabel = new Label(String.valueOf(score), new Skin(Gdx.files.internal("skins/uiskin.json")));

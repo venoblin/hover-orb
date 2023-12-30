@@ -17,13 +17,11 @@ import com.venoblin.hoverorb.interfaces.GameInterface;
 
 public class HoverOrb extends Game implements GameInterface {
 	private Stage stage;
-	private Texture ballTexture;
 	private FileHandle ballHandle;
 
 	@Override
 	public void create() {
 		ballHandle = Gdx.files.internal("balls/ball_2.png");
-		ballTexture = new Texture(ballHandle);
 		stage = new Stage(new StretchViewport(
 				Gdx.graphics.getWidth(),
 				Gdx.graphics.getHeight()
@@ -44,20 +42,19 @@ public class HoverOrb extends Game implements GameInterface {
 	@Override
 	public void dispose() {
 		stage.dispose();
-		ballTexture.dispose();
 	}
 
 	public FileHandle getBallHandle() {
 		return ballHandle;
 	}
 
-	public void updateBallTexture(Texture ballTexture) {
-		this.ballTexture = ballTexture;
+	public void updateBallHandle(FileHandle ballHandle) {
+		this.ballHandle = ballHandle;
 	}
 
 	@Override
 	public void goToGame() {
-		setScreen(new GameScreen(this, stage, ballTexture));
+		setScreen(new GameScreen(this, stage, ballHandle));
 	}
 
 	@Override
