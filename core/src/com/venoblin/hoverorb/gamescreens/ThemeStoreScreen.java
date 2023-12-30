@@ -3,7 +3,6 @@ package com.venoblin.hoverorb.gamescreens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -13,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.venoblin.hoverorb.HoverOrb;
+import com.venoblin.hoverorb.graphics.Graphics;
 import com.venoblin.hoverorb.screen.ScreenHandler;
 
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class ThemeStoreScreen extends ScreenHandler {
             for (FileHandle ball : balls) {
                 final Texture ballTexture = new Texture(ball);
                 ballsTexturesArr.add(ballTexture);
-                Image ballImg = new Image(addStrokeToTexture(ball, Color.GOLD));
+                Image ballImg = new Image(Graphics.addStrokeToTexture(ball, Color.GOLD));
                 ballImg.addListener(new ClickListener() {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -59,19 +59,6 @@ public class ThemeStoreScreen extends ScreenHandler {
         ui.add(ballsTable);
         ui.row();
         ui.add(okBtn).size(200, 80);
-    }
-
-    private Texture addStrokeToTexture(FileHandle ball, Color strokeColor) {
-
-        Pixmap texturePixmap = new Pixmap(ball);
-        texturePixmap.setColor(strokeColor);
-        texturePixmap.drawRectangle(0, 0, texturePixmap.getWidth(), texturePixmap.getHeight());
-
-        Texture ballTexture = new Texture(texturePixmap);
-
-        texturePixmap.dispose();
-
-        return ballTexture;
     }
 
     @Override
