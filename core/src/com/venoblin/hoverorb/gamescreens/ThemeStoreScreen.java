@@ -15,7 +15,7 @@ import com.venoblin.hoverorb.HoverOrb;
 import com.venoblin.hoverorb.graphics.Graphics;
 import com.venoblin.hoverorb.screen.ScreenHandler;
 
-import java.util.ArrayList;
+import java.util.Objects;
 
 public class ThemeStoreScreen extends ScreenHandler {
     private final Table ballsTable;
@@ -40,20 +40,27 @@ public class ThemeStoreScreen extends ScreenHandler {
 
             for (FileHandle ball : balls) {
                 final Texture ballTexture = new Texture(ball);
-                if (ballTexture.equals(game.getBallTexture())) {
+                if (Objects.equals(ball, game.getBallHandle())) {
+                    Image ballImg = new Image(Graphics.addStrokeToTexture(ball, Color.GOLD));
+                    ballImg.addListener(new ClickListener() {
+                        @Override
+                        public void clicked(InputEvent event, float x, float y) {
+                            game.updateBallTexture(ballTexture);
+                        }
+                    });
 
+                    ballsTable.add(ballImg);
+                } else {
+                    Image ballImg = new Image(ballTexture);
+                    ballImg.addListener(new ClickListener() {
+                        @Override
+                        public void clicked(InputEvent event, float x, float y) {
+                            game.updateBallTexture(ballTexture);
+                        }
+                    });
+
+                    ballsTable.add(ballImg);
                 }
-
-                Image ballImg = new Image(Graphics.addStrokeToTexture(ball, Color.GOLD));
-                ballImg.addListener(new ClickListener() {
-                    @Override
-                    public void clicked(InputEvent event, float x, float y) {
-                        game.updateBallTexture(ballTexture);
-                    }
-                });
-
-                ballsTable.add(ballImg);
-                ballTexture.dispose();
             }
         }
 
