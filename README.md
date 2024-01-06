@@ -57,7 +57,7 @@ HoverOrb is a mobile game that consists of a ball and the user's touch inputs. T
 
 - [ ] Add more themes
 - [ ] Make it pretty
-- [ ] Tinker with ball movement to make it challanging enough to be fun
+- [ ] Add a store
 - [ ] Add ball sprite rotation
 
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
