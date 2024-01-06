@@ -120,9 +120,9 @@ public class BallActor extends Actor {
             velocity.y = 125f;
 
             if (touchX < middlePoint - 25) {
-                velocity.x += 5;
+                velocity.x += 7;
             } else if (touchX > middlePoint + 25) {
-                velocity.x -= 5;
+                velocity.x -= 7;
             }
         } else {
             resetWidthHeight();
