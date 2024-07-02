@@ -15,9 +15,10 @@ public class BallActor extends Actor {
     // initial width and height used to reset width and height
     private final int initialWidth = 300;
     private final int initialHeight = 300;
-    private final float gravity = 5.0f;
+    private final float gravity = 500f;
+    private final Vector2 speed = new Vector2(500, 13000);
     private final Vector2 velocity = new Vector2(0, 0);
-    private final Vector2 maxVelocity = new Vector2(50, 300);
+    private final Vector2 maxVelocity = new Vector2(1000, 100000);
     private boolean isGameOver = false;
     private boolean isGameLive = false;
 
@@ -42,9 +43,9 @@ public class BallActor extends Actor {
         return vel;
     }
 
-    private void updatePositionByVelocity(float xVelocity, float yVelocity) {
-        float xVel = xVelocity;
-        float yVel = yVelocity;
+    private void updatePositionByVelocity(float xVelocity, float yVelocity, float delta) {
+        float xVel = xVelocity * delta;
+        float yVel = yVelocity * delta;
 
         if (Math.abs(xVelocity) >= maxVelocity.x) {
             xVel = determineCappedVelocity(xVelocity, maxVelocity.x);
@@ -100,13 +101,13 @@ public class BallActor extends Actor {
             }
         } else if (topSide >= Gdx.graphics.getHeight()) {
             velocity.y *= -1;
-            updatePositionByVelocity(velocity.x, velocity.y);
+            updatePositionByVelocity(velocity.x, velocity.y, delta);
         } else if (rightSide >= Gdx.graphics.getWidth()) {
             velocity.x *= -1;
-            updatePositionByVelocity(velocity.x, velocity.y);
+            updatePositionByVelocity(velocity.x, velocity.y, delta);
         } else if (leftSide <= 0) {
             velocity.x *= -1;
-            updatePositionByVelocity(velocity.x, velocity.y);
+            updatePositionByVelocity(velocity.x, velocity.y, delta);
         }
 
         if (touchDetector.isTouched()) {
@@ -117,18 +118,18 @@ public class BallActor extends Actor {
             float touchX = touchDetector.getTouchPoints().x;
             float middlePoint = touchDetector.getDetectorMiddlePoint();
             height -= 150;
-            velocity.y = 125f;
+            velocity.y = speed.y;
 
             if (touchX < middlePoint - 25) {
-                velocity.x += 7;
+                velocity.x = speed.x;
             } else if (touchX > middlePoint + 25) {
-                velocity.x -= 7;
+                velocity.x = speed.x * - 1;
             }
         } else {
             resetWidthHeight();
         }
 
-        updatePositionByVelocity(velocity.x, velocity.y);
+        updatePositionByVelocity(velocity.x, velocity.y, delta);
     }
 
     @Override
